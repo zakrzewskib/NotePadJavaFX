@@ -19,7 +19,7 @@ public class Controller {
     }
 
     @FXML
-    private void fileNewOnAction() {
+    public void newFileOnAction() {
         System.out.println("New File...");
     }
 }

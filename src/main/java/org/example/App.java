@@ -14,11 +14,20 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    private final MyKeyShortcuts keyShortcuts = new MyKeyShortcuts();
+
+    private void setCtrlPlusNShortCut() {
+        scene.getAccelerators().put(keyShortcuts.getCtrlPlusN(), keyShortcuts.getRunnableForCtrlPlusN());
+    }
 
     @Override
     public void start(Stage stage) throws IOException {
         stage.setTitle("NotePad");
+
         scene = new Scene(loadFXML("notePadLayout"));
+
+        setCtrlPlusNShortCut();
+
         stage.setScene(scene);
         stage.show();
     }
