@@ -1,21 +1,25 @@
 package org.example;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 
 public class Controller {
-
     @FXML
     MenuItem newFile;
-
     @FXML
-    Label labelDownside;
+    MenuItem openFile;
+    @FXML
+    MenuItem saveFile;
+    @FXML
+    MenuItem saveFileAs;
+    @FXML
+    MenuItem exit;
+
+    NamingMenuItems nm = new NamingMenuItems(this);
 
     @FXML
     private void initialize() {
-        System.out.println("Initialize");
-        labelDownside.setText("Test");
+        nm.setNamesForFilesOption();
     }
 
     @FXML
