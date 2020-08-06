@@ -11,7 +11,7 @@
 <items>
     <MenuItem fx:id="newFile" mnemonicParsing="false" onAction="#newFileOnAction" text="New"/>
     <MenuItem fx:id="openFile" mnemonicParsing="false" text="Open..." />
-    <MenuItem fx:id="saveFile" mnemonicParsing="false" text="Save" />
+    <MenuItem fx:id="saveFile" mnemonicParsing="false" onAction="#saveFileOnAction" text="Save" />
     <MenuItem fx:id="saveFileAs" mnemonicParsing="false" text="Save As..." />
     <SeparatorMenuItem mnemonicParsing="false" />
     <MenuItem fx:id="exit" mnemonicParsing="false" text="Exit" />
