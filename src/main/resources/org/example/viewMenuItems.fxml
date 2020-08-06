@@ -1,0 +1,20 @@
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Menu mnemonicParsing="false" text="View"
+      xmlns="http://javafx.com/javafx/11.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.ControllerForView">
+    <items>
+        <Menu mnemonicParsing="false" text="Zoom">
+            <items>
+                <MenuItem fx:id="zoomIn" onAction="#zoomInOnAction" mnemonicParsing="false" text="Zoom In"/>
+                <MenuItem mnemonicParsing="false" text="Zoom Out"/>
+            </items>
+        </Menu>
+        <CheckMenuItem mnemonicParsing="false" selected="true" text="Status Bar"/>
+    </items>
+</Menu>

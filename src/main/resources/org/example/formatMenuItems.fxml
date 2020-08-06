@@ -1,0 +1,15 @@
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Menu mnemonicParsing="false" text="Format"
+      xmlns="http://javafx.com/javafx/11.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.ControllerForFormat">
+    <items>
+        <CheckMenuItem  fx:id="wordWrap" onAction="#wordWrapOnAction" mnemonicParsing="false" text="Word Wrap"/>
+        <MenuItem mnemonicParsing="false" text="Font"/>
+    </items>
+</Menu>

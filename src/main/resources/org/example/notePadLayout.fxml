@@ -19,7 +19,6 @@
         <HBox BorderPane.alignment="CENTER">
             <children>
                 <Label fx:id="labelDownside" text="Label"/>
-                <fx:include source="testButton.fxml"/>
             </children>
             <BorderPane.margin>
                 <Insets/>
@@ -34,29 +33,9 @@
 
                         <fx:include source="fileMenuItems.fxml"/>
                         <fx:include source="editMenuItems.fxml"/>
-
-                        <Menu mnemonicParsing="false" text="Format">
-                            <items>
-                                <CheckMenuItem mnemonicParsing="false" text="Word Wrap"/>
-                                <MenuItem mnemonicParsing="false" text="Font"/>
-                            </items>
-                        </Menu>
-                        <Menu mnemonicParsing="false" text="View">
-                            <items>
-                                <Menu mnemonicParsing="false" text="Zoom">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Zoom In"/>
-                                        <MenuItem mnemonicParsing="false" text="Zoom Out"/>
-                                    </items>
-                                </Menu>
-                                <CheckMenuItem mnemonicParsing="false" selected="true" text="Status Bar"/>
-                            </items>
-                        </Menu>
-                        <Menu mnemonicParsing="false" text="Help">
-                            <items>
-                                <MenuItem mnemonicParsing="false" text="About"/>
-                            </items>
-                        </Menu>
+                        <fx:include source="formatMenuItems.fxml"/>
+                        <fx:include source="viewMenuItems.fxml"/>
+                        <fx:include source="helpMenuItems.fxml"/>
                     </menus>
                 </MenuBar>
             </children>
