@@ -1,19 +1,20 @@
-package org.example;
+package org.notepad.fxmlpackage;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import org.notepad.naming.NamingMenuItems;
 
 public class ControllerForFile {
     @FXML
-    MenuItem newFile;
+    public MenuItem newFile;
     @FXML
-    MenuItem openFile;
+    public MenuItem openFile;
     @FXML
-    MenuItem saveFile;
+    public MenuItem saveFile;
     @FXML
-    MenuItem saveFileAs;
+    public MenuItem saveFileAs;
     @FXML
-    MenuItem exit;
+    public MenuItem exit;
 
     NamingMenuItems nm = new NamingMenuItems(this);
 

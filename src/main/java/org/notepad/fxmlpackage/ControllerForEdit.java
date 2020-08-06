@@ -1,6 +1,5 @@
-package org.example;
+package org.notepad.fxmlpackage;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public class ControllerForEdit {

@@ -1,4 +1,4 @@
-package org.example;
+package org.notepad.fxmlpackage;
 
 public class ControllerForFormat extends Controller {
 

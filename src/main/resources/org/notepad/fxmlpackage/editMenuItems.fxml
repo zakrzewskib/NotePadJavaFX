@@ -7,7 +7,7 @@
 <Menu mnemonicParsing="false" text="Edit"
       xmlns="http://javafx.com/javafx/11.0.1"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.example.ControllerForEdit">
+      fx:controller="org.notepad.fxmlpackage.ControllerForEdit">
     <items>
         <MenuItem fx:id="edit" mnemonicParsing="false" onAction="#editOnAction" text="Undo" />
         <SeparatorMenuItem mnemonicParsing="false" />

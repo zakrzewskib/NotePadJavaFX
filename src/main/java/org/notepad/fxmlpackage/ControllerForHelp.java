@@ -1,6 +1,4 @@
-package org.example;
-
-import javafx.event.ActionEvent;
+package org.notepad.fxmlpackage;
 
 public class ControllerForHelp {
     public void aboutOnAction() {

@@ -7,7 +7,7 @@
 <Menu mnemonicParsing="false" text="File"
       xmlns="http://javafx.com/javafx/11.0.1"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.example.ControllerForFile">
+      fx:controller="org.notepad.fxmlpackage.ControllerForFile">
 <items>
     <MenuItem fx:id="newFile" mnemonicParsing="false" onAction="#newFileOnAction" text="New"/>
     <MenuItem fx:id="openFile" mnemonicParsing="false" text="Open..." />
