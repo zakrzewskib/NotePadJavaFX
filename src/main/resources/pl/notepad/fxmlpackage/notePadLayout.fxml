@@ -15,7 +15,7 @@
             minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="400.0" prefWidth="1000.0"
             xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="pl.notepad.fxmlpackage.ControllerForFile">
+            fx:controller="pl.notepad.fxmlpackage.Controller">
     <bottom>
         <HBox BorderPane.alignment="CENTER">
             <children>
@@ -31,6 +31,7 @@
             <children>
                 <MenuBar fx:id="menuBarNotePad">
                     <menus>
+
                         <Menu mnemonicParsing="false" text="File">
                             <items>
                                 <MenuItem fx:id="newFile" mnemonicParsing="false" text="New"/>
@@ -41,10 +42,47 @@
                                 <MenuItem fx:id="exit" mnemonicParsing="false" text="Exit" />
                             </items>
                         </Menu>
-                        <fx:include source="editMenuItems.fxml"/>
-                        <fx:include source="formatMenuItems.fxml"/>
-                        <fx:include source="viewMenuItems.fxml"/>
-                        <fx:include source="helpMenuItems.fxml"/>
+
+                        <Menu mnemonicParsing="false" text="Edit">
+                            <items>
+                                <MenuItem fx:id="edit" mnemonicParsing="false" onAction="#editOnAction" text="Undo" />
+                                <SeparatorMenuItem mnemonicParsing="false" />
+                                <MenuItem mnemonicParsing="false" text="Redo" />
+                                <MenuItem mnemonicParsing="false" text="Cut" />
+                                <MenuItem mnemonicParsing="false" text="Copy" />
+                                <MenuItem mnemonicParsing="false" text="Paste" />
+                                <MenuItem mnemonicParsing="false" text="Delete" />
+                                <SeparatorMenuItem mnemonicParsing="false" />
+                                <MenuItem mnemonicParsing="false" text="Select All" />
+                            </items>
+                        </Menu>
+
+                        <Menu mnemonicParsing="false" text="Format">
+                            <items>
+                                <CheckMenuItem  fx:id="wordWrap" mnemonicParsing="false" text="Word Wrap"/>
+                                <MenuItem mnemonicParsing="false" text="Font"/>
+                            </items>
+                        </Menu>
+
+                        <Menu mnemonicParsing="false" text="View">
+                            <items>
+                                <Menu mnemonicParsing="false" text="Zoom">
+                                    <items>
+                                        <MenuItem fx:id="zoomIn" mnemonicParsing="false" text="Zoom In"/>
+                                        <MenuItem mnemonicParsing="false" text="Zoom Out"/>
+                                    </items>
+                                </Menu>
+                                <CheckMenuItem mnemonicParsing="false" selected="true" text="Status Bar"/>
+                            </items>
+                        </Menu>
+
+
+                        <Menu mnemonicParsing="false" text="Help">
+                            <items>
+                                <MenuItem fx:id="about" mnemonicParsing="false" text="About"/>
+                            </items>
+                        </Menu>
+
                     </menus>
                 </MenuBar>
             </children>

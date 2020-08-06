@@ -3,17 +3,17 @@ package pl.notepad.shortcuts;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
-import pl.notepad.fxmlpackage.ControllerForFile;
+import pl.notepad.fxmlpackage.Controller;
 
 public class MyKeyShortcuts {
 
     private final KeyCombination ctrlPlusN = new KeyCodeCombination(KeyCode.N, KeyCodeCombination.CONTROL_ANY);
-    ControllerForFile controllerForFile = new ControllerForFile();
+    Controller controller = new Controller();
 
     private final Runnable runnableForCtrlPlusN = new Runnable() {
         @Override
         public void run() {
-            controllerForFile.newFileOnAction();
+            controller.newFileOnAction();
         }
     };
 

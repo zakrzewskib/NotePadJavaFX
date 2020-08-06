@@ -1,14 +1,14 @@
 package pl.notepad.naming;
 
 import javafx.scene.control.MenuItem;
-import pl.notepad.fxmlpackage.ControllerForFile;
+import pl.notepad.fxmlpackage.Controller;
 
 public class NamingMenuItems {
 
-    ControllerForFile controllerForFile;
+    Controller controller;
 
-    public NamingMenuItems(ControllerForFile controllerForFile) {
-        this.controllerForFile = controllerForFile;
+    public NamingMenuItems(Controller controller) {
+        this.controller = controller;
     }
 
     private String makeNameWithShortcut(MenuItem menuItem, String shortcut) {
@@ -18,9 +18,9 @@ public class NamingMenuItems {
         after.append(before);
         int howManySpaces = 50 - (before.length() + shortcut.length());
 
-        if(menuItem.equals(controllerForFile.saveFile)) {
+        if(menuItem.equals(controller.saveFile)) {
             howManySpaces += 1;
-        } else if(menuItem.equals(controllerForFile.saveFileAs)) {
+        } else if(menuItem.equals(controller.saveFileAs)) {
             howManySpaces -= 4;
         }
 
@@ -31,10 +31,10 @@ public class NamingMenuItems {
     }
 
     public void setNamesForFilesOption() {
-        controllerForFile.newFile.setText(makeNameWithShortcut(controllerForFile.newFile, "Ctrl+N"));
-        controllerForFile.openFile.setText(makeNameWithShortcut(controllerForFile.openFile, "Ctrl+O"));
-        controllerForFile.saveFile.setText(makeNameWithShortcut(controllerForFile.saveFile, "Ctrl+S"));
-        controllerForFile.saveFileAs.setText(makeNameWithShortcut(controllerForFile.saveFileAs, "Ctrl+Shift+S"));
-        controllerForFile.openFile.setText(makeNameWithShortcut(controllerForFile.openFile, ""));
+        controller.newFile.setText(makeNameWithShortcut(controller.newFile, "Ctrl+N"));
+        controller.openFile.setText(makeNameWithShortcut(controller.openFile, "Ctrl+O"));
+        controller.saveFile.setText(makeNameWithShortcut(controller.saveFile, "Ctrl+S"));
+        controller.saveFileAs.setText(makeNameWithShortcut(controller.saveFileAs, "Ctrl+Shift+S"));
+        controller.openFile.setText(makeNameWithShortcut(controller.openFile, ""));
     }
 }
