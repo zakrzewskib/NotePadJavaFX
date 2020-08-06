@@ -42,6 +42,7 @@ public class ControllerForFile {
 
     @FXML
     public void saveFileOnAction() {
-        //System.out.println(textArea.getText());
+        System.out.println(textArea.getText());
+        System.out.println("Save");
     }
 }

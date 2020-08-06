@@ -7,11 +7,11 @@
 <Menu mnemonicParsing="false" text="View"
       xmlns="http://javafx.com/javafx/11.0.1"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="pl.notepad.fxmlpackage.ControllerForView">
+        >
     <items>
         <Menu mnemonicParsing="false" text="Zoom">
             <items>
-                <MenuItem fx:id="zoomIn" onAction="#zoomInOnAction" mnemonicParsing="false" text="Zoom In"/>
+                <MenuItem fx:id="zoomIn" mnemonicParsing="false" text="Zoom In"/>
                 <MenuItem mnemonicParsing="false" text="Zoom Out"/>
             </items>
         </Menu>

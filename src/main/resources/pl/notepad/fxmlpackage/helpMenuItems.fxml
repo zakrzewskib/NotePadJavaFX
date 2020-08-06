@@ -7,8 +7,8 @@
 <Menu mnemonicParsing="false" text="Help"
       xmlns="http://javafx.com/javafx/11.0.1"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="pl.notepad.fxmlpackage.ControllerForHelp">
+      >
     <items>
-        <MenuItem fx:id="about" onAction="#aboutOnAction" mnemonicParsing="false" text="About"/>
+        <MenuItem fx:id="about" mnemonicParsing="false" text="About"/>
     </items>
 </Menu>

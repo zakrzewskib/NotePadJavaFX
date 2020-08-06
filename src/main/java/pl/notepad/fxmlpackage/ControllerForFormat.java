@@ -1,8 +1,7 @@
 package pl.notepad.fxmlpackage;
 
-public class ControllerForFormat extends Controller {
+public class ControllerForFormat {
 
-    @Override
     protected void initialize() {
         //super.initialize();
         //System.out.println("Something more in ControllerForFormat");
