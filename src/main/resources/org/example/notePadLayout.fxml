@@ -11,11 +11,12 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller">
+<BorderPane fx:id="borderPaneNotePad" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller">
    <bottom>
       <HBox BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="labelDownside" text="Label" />
+             <fx:include source="testButton.fxml"/>
          </children>
          <BorderPane.margin>
             <Insets />
@@ -23,9 +24,9 @@
       </HBox>
    </bottom>
    <top>
-      <HBox BorderPane.alignment="CENTER">
+      <HBox fx:id="hBoxNotePad" BorderPane.alignment="CENTER">
          <children>
-            <MenuBar>
+            <MenuBar fx:id="menuBarNotePad">
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
