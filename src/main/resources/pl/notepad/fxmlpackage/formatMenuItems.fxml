@@ -7,7 +7,7 @@
 <Menu mnemonicParsing="false" text="Format"
       xmlns="http://javafx.com/javafx/11.0.1"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.notepad.fxmlpackage.ControllerForFormat">
+      fx:controller="pl.notepad.fxmlpackage.ControllerForFormat">
     <items>
         <CheckMenuItem  fx:id="wordWrap" onAction="#wordWrapOnAction" mnemonicParsing="false" text="Word Wrap"/>
         <MenuItem mnemonicParsing="false" text="Font"/>

@@ -1,9 +1,9 @@
-package org.notepad.shortcuts;
+package pl.notepad.shortcuts;
 
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
-import org.notepad.fxmlpackage.ControllerForFile;
+import pl.notepad.fxmlpackage.ControllerForFile;
 
 public class MyKeyShortcuts {
 

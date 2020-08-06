@@ -1,11 +1,11 @@
-package org.notepad.fxmlpackage;
+package pl.notepad.fxmlpackage;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.notepad.shortcuts.MyKeyShortcuts;
+import pl.notepad.shortcuts.MyKeyShortcuts;
 
 import java.io.IOException;
 

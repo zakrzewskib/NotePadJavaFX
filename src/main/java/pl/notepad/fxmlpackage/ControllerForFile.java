@@ -1,8 +1,8 @@
-package org.notepad.fxmlpackage;
+package pl.notepad.fxmlpackage;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
-import org.notepad.naming.NamingMenuItems;
+import pl.notepad.naming.NamingMenuItems;
 
 public class ControllerForFile {
     @FXML

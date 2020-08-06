@@ -1,7 +1,7 @@
-package org.notepad.naming;
+package pl.notepad.naming;
 
 import javafx.scene.control.MenuItem;
-import org.notepad.fxmlpackage.ControllerForFile;
+import pl.notepad.fxmlpackage.ControllerForFile;
 
 public class NamingMenuItems {
 

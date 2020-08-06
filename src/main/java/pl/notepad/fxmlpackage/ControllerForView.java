@@ -1,4 +1,4 @@
-package org.notepad.fxmlpackage;
+package pl.notepad.fxmlpackage;
 
 public class ControllerForView extends Controller {
     public void zoomInOnAction() {

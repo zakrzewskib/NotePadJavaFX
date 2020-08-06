@@ -1,4 +1,4 @@
-package org.notepad.fxmlpackage;
+package pl.notepad.fxmlpackage;
 
 import javafx.fxml.FXML;
 
