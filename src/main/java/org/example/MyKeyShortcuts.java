@@ -7,12 +7,12 @@ import javafx.scene.input.KeyCombination;
 public class MyKeyShortcuts {
 
     private final KeyCombination ctrlPlusN = new KeyCodeCombination(KeyCode.N, KeyCodeCombination.CONTROL_ANY);
-    Controller controller = new Controller();
+    ControllerForFile controllerForFile = new ControllerForFile();
 
     private final Runnable runnableForCtrlPlusN = new Runnable() {
         @Override
         public void run() {
-            controller.newFileOnAction();
+            controllerForFile.newFileOnAction();
         }
     };
 

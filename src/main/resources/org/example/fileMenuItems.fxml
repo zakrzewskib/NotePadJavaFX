@@ -1,0 +1,17 @@
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Menu mnemonicParsing="false" text="File" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.ControllerForFile">
+<items>
+    <MenuItem fx:id="newFile" mnemonicParsing="false" onAction="#newFileOnAction" text="New"/>
+    <MenuItem fx:id="openFile" mnemonicParsing="false" text="Open..." />
+    <MenuItem fx:id="saveFile" mnemonicParsing="false" text="Save" />
+    <MenuItem fx:id="saveFileAs" mnemonicParsing="false" text="Save As..." />
+    <SeparatorMenuItem mnemonicParsing="false" />
+    <MenuItem fx:id="exit" mnemonicParsing="false" text="Exit" />
+</items>
+</Menu>

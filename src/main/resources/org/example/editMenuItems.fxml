@@ -1,0 +1,20 @@
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Menu mnemonicParsing="false" text="Edit" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.ControllerForEdit">
+    <items>
+        <MenuItem fx:id="edit" mnemonicParsing="false" onAction="#editOnAction" text="Undo" />
+        <SeparatorMenuItem mnemonicParsing="false" />
+        <MenuItem mnemonicParsing="false" text="Redo" />
+        <MenuItem mnemonicParsing="false" text="Cut" />
+        <MenuItem mnemonicParsing="false" text="Copy" />
+        <MenuItem mnemonicParsing="false" text="Paste" />
+        <MenuItem mnemonicParsing="false" text="Delete" />
+        <SeparatorMenuItem mnemonicParsing="false" />
+        <MenuItem mnemonicParsing="false" text="Select All" />
+    </items>
+</Menu>
