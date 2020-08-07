@@ -7,21 +7,35 @@ import pl.notepad.fxmlpackage.Controller;
 
 public class MyKeyShortcuts {
 
-    private final KeyCombination ctrlPlusN = new KeyCodeCombination(KeyCode.N, KeyCodeCombination.CONTROL_ANY);
     Controller controller = new Controller();
 
-    private final Runnable runnableForCtrlPlusN = new Runnable() {
-        @Override
-        public void run() {
-            controller.newFileOnAction();
-        }
-    };
-
     public KeyCombination getCtrlPlusN() {
+        KeyCombination ctrlPlusN = new KeyCodeCombination(KeyCode.N, KeyCodeCombination.CONTROL_ANY);
         return ctrlPlusN;
     }
 
     public Runnable getRunnableForCtrlPlusN() {
+        Runnable runnableForCtrlPlusN = new Runnable() {
+            @Override
+            public void run() {
+                controller.newFileOnAction();
+            }
+        };
+        return runnableForCtrlPlusN;
+    }
+
+    public KeyCombination getCtrlPlusO() {
+        KeyCombination ctrlPlusN = new KeyCodeCombination(KeyCode.O, KeyCodeCombination.CONTROL_ANY);
+        return ctrlPlusN;
+    }
+
+    public Runnable getRunnableForCtrlPlusO() {
+        Runnable runnableForCtrlPlusN = new Runnable() {
+            @Override
+            public void run() {
+                controller.openFileOnAction();
+            }
+        };
         return runnableForCtrlPlusN;
     }
 }

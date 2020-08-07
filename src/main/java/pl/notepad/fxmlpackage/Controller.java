@@ -31,6 +31,10 @@ public class Controller {
     public void newFileOnAction() {
         System.out.println("newFile");
     }
+
+    public void openFileOnAction() {
+        System.out.println("open");
+    }
     
     @FXML
     public void saveFileOnAction() {
