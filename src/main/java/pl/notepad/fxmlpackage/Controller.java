@@ -6,6 +6,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import pl.notepad.naming.NamingMenuItems;
 import pl.notepad.openFile.FileOpener;
+import pl.notepad.openFile.SaveFile;
 
 public class Controller {
     @FXML
@@ -47,8 +48,7 @@ public class Controller {
     public void saveFileOnAction() {
         System.out.println(textArea.getText());
         System.out.println("saveFile");
-        var fileOpener = new FileOpener();
-        fileOpener.saveFile(textArea.getText());
+        SaveFile.saveFile(textArea.getText());
     }
 
     @FXML
@@ -58,8 +58,7 @@ public class Controller {
 
     public void saveFileAsOnAction(ActionEvent actionEvent) {
         System.out.println("saveFileAs");
-        var fileOpener = new FileOpener();
-        fileOpener.saveFileAs(textArea.getText());
+        SaveFile.saveFileAs(textArea.getText());
     }
 
     public void exitOnAction(ActionEvent actionEvent) {

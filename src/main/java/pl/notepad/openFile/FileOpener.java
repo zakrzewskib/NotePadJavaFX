@@ -14,17 +14,17 @@ import org.example.SaveFileWithFileChooser;
 
 public class FileOpener {
 
-    private static File file;
     private File openFile() {
         FileChooser fileChooser = new FileChooser();
-        file = fileChooser.showOpenDialog(new Stage());
+        File file = fileChooser.showOpenDialog(new Stage());
+        SaveFile.setFile(file);
         return file;
     }
 
     private String formatStringFromFile(BufferedReader bufferedReader) {
         try {
             StringBuilder stringBuilder = new StringBuilder();
-            String line = null;
+            String line;
             String ls = System.getProperty("line.separator");
             while ((line = bufferedReader.readLine()) != null) {
                 stringBuilder.append(line);
@@ -51,40 +51,40 @@ public class FileOpener {
         }
         return content;
     }
-    public void saveFileAs(String text){
-
-        FileChooser fileChooser = new FileChooser();
-
-        //Set extension filter for text files
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
-        fileChooser.getExtensionFilters().add(extFilter);
-
-        //Show save file dialog
-        File file = fileChooser.showSaveDialog(new Stage());
-
-        if (file != null) {
-            saveTextToFile(text, file);
-        }
-    }
-
-    public void saveFile(String text){
-        if(file == null){
-            saveFileAs(text);
-        }else {
-            saveTextToFile(text, file);
-        }
-    }
-
-    private void saveTextToFile(String content, File file) {
-        try {
-            PrintWriter writer;
-            writer = new PrintWriter(file);
-            writer.println(content);
-            writer.close();
-        } catch (IOException ex) {
-            Logger.getLogger(SaveFileWithFileChooser.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
+//    public void saveFileAs(String text){
+//
+//        FileChooser fileChooser = new FileChooser();
+//
+//        //Set extension filter for text files
+//        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+//        fileChooser.getExtensionFilters().add(extFilter);
+//
+//        //Show save file dialog
+//        File file = fileChooser.showSaveDialog(new Stage());
+//
+//        if (file != null) {
+//            saveTextToFile(text, file);
+//        }
+//    }
+//
+//    public void saveFile(String text){
+//        if(file == null){
+//            saveFileAs(text);
+//        }else {
+//            saveTextToFile(text, file);
+//        }
+//    }
+//
+//    private void saveTextToFile(String content, File file) {
+//        try {
+//            PrintWriter writer;
+//            writer = new PrintWriter(file);
+//            writer.println(content);
+//            writer.close();
+//        } catch (IOException ex) {
+//            Logger.getLogger(SaveFileWithFileChooser.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+//
 
 }
