@@ -1,6 +1,7 @@
 module org.example {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.logging;
 
     opens pl.notepad.fxmlpackage to javafx.fxml; // here
     exports pl.notepad.fxmlpackage;

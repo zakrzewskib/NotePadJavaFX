@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane fx:id="borderPaneNotePad" maxHeight="-Infinity" maxWidth="-Infinity"
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity"
             minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="400.0" prefWidth="1000.0"
             xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
@@ -27,40 +27,40 @@
         </HBox>
     </bottom>
     <top>
-        <HBox fx:id="hBoxNotePad" BorderPane.alignment="CENTER">
+        <HBox BorderPane.alignment="CENTER">
             <children>
-                <MenuBar fx:id="menuBarNotePad">
+                <MenuBar>
                     <menus>
 
                         <Menu mnemonicParsing="false" text="File">
                             <items>
-                                <MenuItem fx:id="newFile" mnemonicParsing="false" text="New"/>
-                                <MenuItem fx:id="openFile" mnemonicParsing="false" text="Open..." />
+                                <MenuItem fx:id="newFile" mnemonicParsing="false" text="New" onAction="#newFileOnAction"/>
+                                <MenuItem fx:id="openFile" mnemonicParsing="false" text="Open..."  onAction="#openFileOnAction"/>
                                 <MenuItem fx:id="saveFile" mnemonicParsing="false" onAction="#saveFileOnAction" text="Save" />
-                                <MenuItem fx:id="saveFileAs" mnemonicParsing="false" text="Save As..." />
+                                <MenuItem fx:id="saveFileAs" mnemonicParsing="false" onAction="#saveFileAsOnAction" text="Save As..." />
                                 <SeparatorMenuItem mnemonicParsing="false" />
-                                <MenuItem fx:id="exit" mnemonicParsing="false" text="Exit" />
+                                <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#exitOnAction" text="Exit" />
                             </items>
                         </Menu>
 
                         <Menu mnemonicParsing="false" text="Edit">
                             <items>
-                                <MenuItem fx:id="edit" mnemonicParsing="false" onAction="#editOnAction" text="Undo" />
+                                <MenuItem mnemonicParsing="false" onAction="#undoOnAction" text="Undo" />
                                 <SeparatorMenuItem mnemonicParsing="false" />
-                                <MenuItem mnemonicParsing="false" text="Redo" />
-                                <MenuItem mnemonicParsing="false" text="Cut" />
-                                <MenuItem mnemonicParsing="false" text="Copy" />
-                                <MenuItem mnemonicParsing="false" text="Paste" />
-                                <MenuItem mnemonicParsing="false" text="Delete" />
+                                <MenuItem mnemonicParsing="false" text="Redo" onAction="#redoOnAction"/>
+                                <MenuItem mnemonicParsing="false" text="Cut" onAction="#cutOnAction"/>
+                                <MenuItem mnemonicParsing="false" text="Copy" onAction="#copyOnAction"/>
+                                <MenuItem mnemonicParsing="false" text="Paste" onAction="#pasteOnAction"/>
+                                <MenuItem mnemonicParsing="false" text="Delete" onAction="#deleteOnAction"/>
                                 <SeparatorMenuItem mnemonicParsing="false" />
-                                <MenuItem mnemonicParsing="false" text="Select All" />
+                                <MenuItem mnemonicParsing="false" text="Select All" onAction="#selectAllOnAction"/>
                             </items>
                         </Menu>
 
                         <Menu mnemonicParsing="false" text="Format">
                             <items>
-                                <CheckMenuItem  fx:id="wordWrap" mnemonicParsing="false" text="Word Wrap"/>
-                                <MenuItem mnemonicParsing="false" text="Font"/>
+                                <CheckMenuItem mnemonicParsing="false" text="Word Wrap" onAction="#wordWrapOnAction"/>
+                                <MenuItem mnemonicParsing="false" text="Font" onAction="#fontOnAction"/>
                             </items>
                         </Menu>
 
@@ -68,18 +68,17 @@
                             <items>
                                 <Menu mnemonicParsing="false" text="Zoom">
                                     <items>
-                                        <MenuItem fx:id="zoomIn" mnemonicParsing="false" text="Zoom In"/>
-                                        <MenuItem mnemonicParsing="false" text="Zoom Out"/>
+                                        <MenuItem mnemonicParsing="false" text="Zoom In" onAction="#zoomInOnAction"/>
+                                        <MenuItem mnemonicParsing="false" text="Zoom Out" onAction="#zoomOutOnAction"/>
                                     </items>
                                 </Menu>
-                                <CheckMenuItem mnemonicParsing="false" selected="true" text="Status Bar"/>
+                                <CheckMenuItem mnemonicParsing="false" selected="true" text="Status Bar" onAction="#statusBarOnAction"/>
                             </items>
                         </Menu>
 
-
                         <Menu mnemonicParsing="false" text="Help">
                             <items>
-                                <MenuItem fx:id="about" mnemonicParsing="false" text="About"/>
+                                <MenuItem mnemonicParsing="false" text="About" onAction="#aboutOnAction"/>
                             </items>
                         </Menu>
 
