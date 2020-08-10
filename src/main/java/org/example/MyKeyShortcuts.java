@@ -9,12 +9,7 @@ public class MyKeyShortcuts {
     private final KeyCombination ctrlPlusN = new KeyCodeCombination(KeyCode.N, KeyCodeCombination.CONTROL_ANY);
     Controller controller = new Controller();
 
-    private final Runnable runnableForCtrlPlusN = new Runnable() {
-        @Override
-        public void run() {
-            controller.newFileOnAction();
-        }
-    };
+    private final Runnable runnableForCtrlPlusN = () -> controller.newFileOnAction();
 
     public KeyCombination getCtrlPlusN() {
         return ctrlPlusN;
