@@ -70,8 +70,9 @@ public class FileOpener {
     public void saveFile(String text){
         if(file == null){
             saveFileAs(text);
+        }else {
+            saveTextToFile(text, file);
         }
-        saveTextToFile(text,file);
     }
 
     private void saveTextToFile(String content, File file) {
