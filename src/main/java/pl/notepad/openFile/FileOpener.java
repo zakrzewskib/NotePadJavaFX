@@ -1,5 +1,8 @@
 package pl.notepad.openFile;
 
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -7,12 +10,15 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import org.example.SaveFileWithFileChooser;
 
 public class FileOpener {
 
+    private static File file;
     private File openFile() {
         FileChooser fileChooser = new FileChooser();
-        return fileChooser.showOpenDialog(new Stage());
+        file = fileChooser.showOpenDialog(new Stage());
+        return file;
     }
 
     private String formatStringFromFile(BufferedReader bufferedReader) {
@@ -45,5 +51,39 @@ public class FileOpener {
         }
         return content;
     }
+    public void saveFileAs(String text){
+
+        FileChooser fileChooser = new FileChooser();
+
+        //Set extension filter for text files
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        //Show save file dialog
+        File file = fileChooser.showSaveDialog(new Stage());
+
+        if (file != null) {
+            saveTextToFile(text, file);
+        }
+    }
+
+    public void saveFile(String text){
+        if(file == null){
+            saveFileAs(text);
+        }
+        saveTextToFile(text,file);
+    }
+
+    private void saveTextToFile(String content, File file) {
+        try {
+            PrintWriter writer;
+            writer = new PrintWriter(file);
+            writer.println(content);
+            writer.close();
+        } catch (IOException ex) {
+            Logger.getLogger(SaveFileWithFileChooser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 
 }

@@ -47,6 +47,8 @@ public class Controller {
     public void saveFileOnAction() {
         System.out.println(textArea.getText());
         System.out.println("saveFile");
+        var fileOpener = new FileOpener();
+        fileOpener.saveFile(textArea.getText());
     }
 
     @FXML
@@ -56,10 +58,12 @@ public class Controller {
 
     public void saveFileAsOnAction(ActionEvent actionEvent) {
         System.out.println("saveFileAs");
+        var fileOpener = new FileOpener();
+        fileOpener.saveFileAs(textArea.getText());
     }
 
     public void exitOnAction(ActionEvent actionEvent) {
-        System.out.println("Save");
+        System.out.println("exit and Save");
     }
 
     public void redoOnAction(ActionEvent actionEvent) {
