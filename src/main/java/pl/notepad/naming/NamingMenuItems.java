@@ -1,6 +1,7 @@
-package org.example;
+package pl.notepad.naming;
 
 import javafx.scene.control.MenuItem;
+import pl.notepad.fxmlpackage.Controller;
 
 public class NamingMenuItems {
 
@@ -31,10 +32,7 @@ public class NamingMenuItems {
 
     public void setNamesForFilesOption() {
         controller.newFile.setText(makeNameWithShortcut(controller.newFile, "Ctrl+N"));
-
         controller.openFile.setText(makeNameWithShortcut(controller.openFile, "Ctrl+O"));
-        //controller.openFile.setText(addSpacesToNameWithThreeDots(controller.openFile.getText()));
-
         controller.saveFile.setText(makeNameWithShortcut(controller.saveFile, "Ctrl+S"));
         controller.saveFileAs.setText(makeNameWithShortcut(controller.saveFileAs, "Ctrl+Shift+S"));
         controller.openFile.setText(makeNameWithShortcut(controller.openFile, ""));
