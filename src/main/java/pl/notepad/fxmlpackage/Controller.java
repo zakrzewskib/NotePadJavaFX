@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import pl.notepad.naming.NamingMenuItems;
+import pl.notepad.openFile.FileOpener;
 
 public class Controller {
     @FXML
@@ -22,6 +23,10 @@ public class Controller {
 
     NamingMenuItems nm = new NamingMenuItems(this);
 
+    private void setNewTextToTextArea(String text) {
+        textArea.setText(text);
+    }
+
     @FXML
     private void initialize() {
         nm.setNamesForFilesOption();
@@ -34,6 +39,8 @@ public class Controller {
 
     public void openFileOnAction() {
         System.out.println("open");
+        FileOpener fileOpener = new FileOpener();
+        setNewTextToTextArea(fileOpener.readStringFromFile());
     }
     
     @FXML
