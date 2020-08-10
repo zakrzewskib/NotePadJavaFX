@@ -1,10 +1,12 @@
-package org.example;
+package pl.notepad.fxmlpackage;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
+import pl.notepad.shortcuts.MyKeyShortcuts;
 
 import java.io.IOException;
 
@@ -16,8 +18,14 @@ public class App extends Application {
     private static Scene scene;
     private final MyKeyShortcuts keyShortcuts = new MyKeyShortcuts();
 
-    private void setCtrlPlusNShortCut() {
-        scene.getAccelerators().put(keyShortcuts.getCtrlPlusN(), keyShortcuts.getRunnableForCtrlPlusN());
+    // Adding keyShortcuts in App (where the scene is) prevents Exceptions
+    private void addShortCut(KeyCombination k, Runnable r) {
+        scene.getAccelerators().put(k, r);
+    }
+
+    private void addShortCuts() {
+        addShortCut(keyShortcuts.getCtrlPlusN(), keyShortcuts.getRunnableForCtrlPlusN());
+        addShortCut(keyShortcuts.getCtrlPlusO(), keyShortcuts.getRunnableForCtrlPlusO());
     }
 
     @Override
@@ -26,7 +34,7 @@ public class App extends Application {
 
         scene = new Scene(loadFXML("notePadLayout"));
 
-        setCtrlPlusNShortCut();
+        addShortCuts();
 
         stage.setScene(scene);
         stage.show();
