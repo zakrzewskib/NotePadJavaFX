@@ -1,4 +1,4 @@
-package pl.notepad.openFile;
+package pl.notepad.openAndSaveFile;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,11 +12,11 @@ import org.example.SaveFileWithFileChooser;
 public class SaveFile {
     private static File file;
 
-    public static void setFile(File file) {
+    static void setFile(File file) {
         SaveFile.file = file;
     }
 
-    public static void saveFileAs(String text){
+    public static void saveFileAs(String text) {
 
         FileChooser fileChooser = new FileChooser();
 
@@ -32,10 +32,10 @@ public class SaveFile {
         }
     }
 
-    public static void saveFile(String text){
-        if(file == null){
+    public static void saveFile(String text) {
+        if (file == null) {
             saveFileAs(text);
-        }else {
+        } else {
             saveTextToFile(text, file);
         }
     }

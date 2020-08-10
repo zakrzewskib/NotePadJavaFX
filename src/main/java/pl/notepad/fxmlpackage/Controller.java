@@ -1,12 +1,11 @@
 package pl.notepad.fxmlpackage;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import pl.notepad.naming.NamingMenuItems;
-import pl.notepad.openFile.FileOpener;
-import pl.notepad.openFile.SaveFile;
+import pl.notepad.openAndSaveFile.FileOpener;
+import pl.notepad.openAndSaveFile.SaveFile;
 
 public class Controller {
     @FXML
@@ -40,8 +39,7 @@ public class Controller {
 
     public void openFileOnAction() {
         System.out.println("open");
-        FileOpener fileOpener = new FileOpener();
-        setNewTextToTextArea(fileOpener.readStringFromFile());
+        setNewTextToTextArea(FileOpener.readStringFromFile());
     }
     
     @FXML
@@ -56,60 +54,60 @@ public class Controller {
         System.out.println("undo");
     }
 
-    public void saveFileAsOnAction(ActionEvent actionEvent) {
+    public void saveFileAsOnAction() {
         System.out.println("saveFileAs");
         SaveFile.saveFileAs(textArea.getText());
     }
 
-    public void exitOnAction(ActionEvent actionEvent) {
+    public void exitOnAction() {
         System.out.println("exit and Save");
     }
 
-    public void redoOnAction(ActionEvent actionEvent) {
+    public void redoOnAction() {
         System.out.println("redo");
     }
 
-    public void cutOnAction(ActionEvent actionEvent) {
+    public void cutOnAction() {
         System.out.println("cut");
     }
 
-    public void copyOnAction(ActionEvent actionEvent) {
+    public void copyOnAction() {
         System.out.println("copy");
     }
 
-    public void pasteOnAction(ActionEvent actionEvent) {
+    public void pasteOnAction() {
         System.out.println("paste");
     }
 
-    public void deleteOnAction(ActionEvent actionEvent) {
+    public void deleteOnAction() {
         System.out.println("delete");
     }
 
-    public void selectAllOnAction(ActionEvent actionEvent) {
+    public void selectAllOnAction() {
         System.out.println("selectAll");
     }
 
-    public void wordWrapOnAction(ActionEvent actionEvent) {
+    public void wordWrapOnAction() {
         System.out.println("wordWrap");
     }
 
-    public void fontOnAction(ActionEvent actionEvent) {
+    public void fontOnAction() {
         System.out.println("font");
     }
 
-    public void zoomInOnAction(ActionEvent actionEvent) {
+    public void zoomInOnAction() {
         System.out.println("zoomIn");
     }
 
-    public void zoomOutOnAction(ActionEvent actionEvent) {
+    public void zoomOutOnAction() {
         System.out.println("zoomOut");
     }
 
-    public void statusBarOnAction(ActionEvent actionEvent) {
+    public void statusBarOnAction() {
         System.out.println("statusBar");
     }
 
-    public void aboutOnAction(ActionEvent actionEvent) {
+    public void aboutOnAction() {
         System.out.println("about");
     }
 }
