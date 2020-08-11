@@ -42,6 +42,7 @@ public class MyKeyShortcuts {
     }
 
     // getting textArea is complicated 'because Threads'
+    // https://stackoverflow.com/questions/31408363/javafx-changelistener-not-always-working/31414801#31414801
     public Runnable getRunnableForCtrlPlusS() {
         return new Runnable() {
             @Override
