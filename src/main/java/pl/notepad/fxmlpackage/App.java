@@ -26,6 +26,7 @@ public class App extends Application {
     private void addShortCuts() {
         addShortCut(keyShortcuts.getCtrlPlusN(), keyShortcuts.getRunnableForCtrlPlusN());
         addShortCut(keyShortcuts.getCtrlPlusO(), keyShortcuts.getRunnableForCtrlPlusO());
+        addShortCut(keyShortcuts.getCtrlPlusS(), keyShortcuts.getRunnableForCtrlPlusS());
     }
 
     @Override

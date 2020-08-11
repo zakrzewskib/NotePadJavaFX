@@ -1,5 +1,7 @@
 package pl.notepad.shortcuts;
 
+import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
@@ -10,32 +12,44 @@ public class MyKeyShortcuts {
     Controller controller = new Controller();
 
     public KeyCombination getCtrlPlusN() {
-        KeyCombination ctrlPlusN = new KeyCodeCombination(KeyCode.N, KeyCodeCombination.CONTROL_ANY);
-        return ctrlPlusN;
+        return new KeyCodeCombination(KeyCode.N, KeyCodeCombination.CONTROL_ANY);
     }
 
     public Runnable getRunnableForCtrlPlusN() {
-        Runnable runnableForCtrlPlusN = new Runnable() {
+        return new Runnable() {
             @Override
             public void run() {
                 controller.newFileOnAction();
             }
         };
-        return runnableForCtrlPlusN;
     }
 
     public KeyCombination getCtrlPlusO() {
-        KeyCombination ctrlPlusN = new KeyCodeCombination(KeyCode.O, KeyCodeCombination.CONTROL_ANY);
-        return ctrlPlusN;
+        return new KeyCodeCombination(KeyCode.O, KeyCodeCombination.CONTROL_ANY);
     }
 
     public Runnable getRunnableForCtrlPlusO() {
-        Runnable runnableForCtrlPlusN = new Runnable() {
+        return new Runnable() {
             @Override
             public void run() {
                 controller.openFileOnAction();
             }
         };
-        return runnableForCtrlPlusN;
+    }
+
+    public KeyCombination getCtrlPlusS() {
+        return new KeyCodeCombination(KeyCode.S, KeyCodeCombination.CONTROL_ANY);
+    }
+
+    // getting textArea is complicated 'because Threads'
+    public Runnable getRunnableForCtrlPlusS() {
+        return new Runnable() {
+            @Override
+            public void run() {
+                //controller.saveFileOnAction(); // does not work
+                //Platform.runLater(() -> controller.saveFileOnAction()); // does not work
+                System.out.println("should be saving");
+            }
+        };
     }
 }
