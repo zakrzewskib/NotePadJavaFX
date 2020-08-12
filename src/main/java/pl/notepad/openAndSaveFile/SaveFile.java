@@ -12,6 +12,10 @@ import org.example.SaveFileWithFileChooser;
 public class SaveFile {
     private static File file;
 
+    public static File getFile() {
+        return file;
+    }
+
     static void setFile(File file) {
         SaveFile.file = file;
     }

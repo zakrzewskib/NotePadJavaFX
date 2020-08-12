@@ -43,7 +43,7 @@ public class Controller {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                if(!previousTextArea.equals(textArea.getText())) {
+                if (!previousTextArea.equals(textArea.getText())) {
                     //System.out.println("Change");
                     textAreaWasChanged = true;
                 }
@@ -53,7 +53,7 @@ public class Controller {
 
     @FXML
     public void newFileOnAction() {
-        if(textAreaWasChanged) {
+        if (textAreaWasChanged) {
             // should open up a window
             System.out.println("We wont let you make new File");
         } else {
@@ -67,12 +67,25 @@ public class Controller {
         System.out.println("open");
         setNewTextToTextArea(FileOpener.readStringFromFile());
     }
-    
+
     @FXML
     public void saveFileOnAction() {
         System.out.println(textArea.getText());
         System.out.println("saveFile");
         SaveFile.saveFile(textArea.getText());
+        if(SaveFile.getFile() == null) {
+            System.out.println("null");
+        } else {
+            System.out.println(SaveFile.getFile());
+        }
+
+//        if(SaveFile.getFile() != null) {
+//            previousTextArea = textArea.getText();
+//            textAreaWasChanged = false;
+//        } else {
+//            System.out.println("You did not choose file");
+//        }
+
         previousTextArea = textArea.getText();
         textAreaWasChanged = false;
     }
