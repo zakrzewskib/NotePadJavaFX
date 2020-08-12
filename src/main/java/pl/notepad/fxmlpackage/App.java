@@ -1,11 +1,13 @@
 package pl.notepad.fxmlpackage;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import pl.notepad.shortcuts.MyKeyShortcuts;
 
 import java.io.IOException;
@@ -39,6 +41,18 @@ public class App extends Application {
 
         stage.setScene(scene);
         stage.show();
+
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent windowEvent) {
+                Controller controller = new Controller();
+                if(controller.textAreaWasChanged) {
+                    System.out.println("You did not save");
+                } else {
+                    System.out.println("You saved");
+                }
+            }
+        });
     }
 
     static void setRoot(String fxml) throws IOException {

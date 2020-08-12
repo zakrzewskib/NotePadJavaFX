@@ -25,7 +25,11 @@ public class Controller {
     TextArea textArea;
 
     String previousTextArea;
-    boolean textAreaWasChanged = false;
+    public boolean textAreaWasChanged = false;
+
+    public boolean isTextAreaWasChanged() {
+        return textAreaWasChanged;
+    }
 
     NamingMenuItems nm = new NamingMenuItems(this);
 
