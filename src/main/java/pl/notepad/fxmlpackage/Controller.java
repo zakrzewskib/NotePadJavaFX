@@ -30,6 +30,7 @@ public class Controller {
     NamingMenuItems nm = new NamingMenuItems(this);
 
     Timer timer = new Timer();
+    SaveFile saveFileClass = new SaveFile();
 
     private void setNewTextToTextArea(String text) {
         textArea.setText(text);
@@ -44,7 +45,7 @@ public class Controller {
             @Override
             public void run() {
                 if (!previousTextArea.equals(textArea.getText())) {
-                    //System.out.println("Change");
+                    System.out.println("Change");
                     textAreaWasChanged = true;
                 }
             }
@@ -72,22 +73,14 @@ public class Controller {
     public void saveFileOnAction() {
         System.out.println(textArea.getText());
         System.out.println("saveFile");
-        SaveFile.saveFile(textArea.getText());
-        if(SaveFile.getFile() == null) {
-            System.out.println("null");
+        saveFileClass.saveFile(textArea.getText());
+
+        if(saveFileClass.fileWasNull) {
+            System.out.println("You did not choose file");
         } else {
-            System.out.println(SaveFile.getFile());
+            previousTextArea = textArea.getText();
+            textAreaWasChanged = false;
         }
-
-//        if(SaveFile.getFile() != null) {
-//            previousTextArea = textArea.getText();
-//            textAreaWasChanged = false;
-//        } else {
-//            System.out.println("You did not choose file");
-//        }
-
-        previousTextArea = textArea.getText();
-        textAreaWasChanged = false;
     }
 
     @FXML
@@ -97,7 +90,7 @@ public class Controller {
 
     public void saveFileAsOnAction() {
         System.out.println("saveFileAs");
-        SaveFile.saveFileAs(textArea.getText());
+        saveFileClass.saveFileAs(textArea.getText());
     }
 
     public void exitOnAction() {
