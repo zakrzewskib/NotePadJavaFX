@@ -19,7 +19,8 @@ public class MyKeyShortcuts {
         return new Runnable() {
             @Override
             public void run() {
-                controller.newFileOnAction();
+                //controller.newFileOnAction();
+                System.out.println("should new");
             }
         };
     }
