@@ -12,7 +12,8 @@ public class FileOpener {
     private static File openFile() {
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog(new Stage());
-        SaveFile.setFile(file);
+        SaveFile saveFile = new SaveFile();
+        saveFile.setFile(file);
         return file;
     }
 

@@ -10,17 +10,14 @@ import javafx.stage.Stage;
 import org.example.SaveFileWithFileChooser;
 
 public class SaveFile {
-    private static File file;
+    private File file;
+    public boolean fileWasNull = true;
 
-    public static File getFile() {
-        return file;
+     public void setFile(File file) {
+        this.file = file;
     }
 
-    static void setFile(File file) {
-        SaveFile.file = file;
-    }
-
-    public static void saveFileAs(String text) {
+    public void saveFileAs(String text) {
 
         FileChooser fileChooser = new FileChooser();
 
@@ -32,19 +29,21 @@ public class SaveFile {
         File file = fileChooser.showSaveDialog(new Stage());
 
         if (file != null) {
+            fileWasNull = false;
             saveTextToFile(text, file);
         }
     }
 
-    public static void saveFile(String text) {
+    public void saveFile(String text) {
         if (file == null) {
+            fileWasNull = true;
             saveFileAs(text);
         } else {
             saveTextToFile(text, file);
         }
     }
 
-    private static void saveTextToFile(String content, File file) {
+    private void saveTextToFile(String content, File file) {
         try {
             PrintWriter writer;
             writer = new PrintWriter(file);
