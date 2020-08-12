@@ -7,6 +7,9 @@ import pl.notepad.naming.NamingMenuItems;
 import pl.notepad.openAndSaveFile.FileOpener;
 import pl.notepad.openAndSaveFile.SaveFile;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Controller {
     @FXML
     public MenuItem newFile;
@@ -21,7 +24,11 @@ public class Controller {
     @FXML
     TextArea textArea;
 
+    String previousTextArea;
+
     NamingMenuItems nm = new NamingMenuItems(this);
+
+    Timer timer = new Timer();
 
     private void setNewTextToTextArea(String text) {
         textArea.setText(text);
@@ -30,10 +37,21 @@ public class Controller {
     @FXML
     private void initialize() {
         nm.setNamesForFilesOption();
+        previousTextArea = textArea.getText();
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if(!previousTextArea.equals(textArea.getText())) {
+                    System.out.println("Change");
+                }
+            }
+        }, 0, 1000);
     }
 
     @FXML
     public void newFileOnAction() {
+        textArea.setText("");
         System.out.println("newFile");
     }
 
@@ -47,6 +65,7 @@ public class Controller {
         System.out.println(textArea.getText());
         System.out.println("saveFile");
         SaveFile.saveFile(textArea.getText());
+        previousTextArea = textArea.getText();
     }
 
     @FXML
