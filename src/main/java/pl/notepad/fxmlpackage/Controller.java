@@ -97,7 +97,9 @@ public class Controller {
             int last = arrayList.size()-1;
             arrayList.remove(last);
             textArea.setText(arrayList.get(arrayList.size()-1));
-        }catch (IndexOutOfBoundsException  ignored){
+            arrayList.remove(last);
+        }catch (IndexOutOfBoundsException  e){
+            e.getMessage();
         }
 
     }

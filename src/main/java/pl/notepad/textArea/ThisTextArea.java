@@ -5,19 +5,15 @@ import javafx.scene.control.TextArea;
 
 public class ThisTextArea {
     ArrayList<String> listChangeOfTextArea = new ArrayList<>();
-    public ThisTextArea(TextArea textArea){
+
+    public ThisTextArea(TextArea textArea) {
+        listChangeOfTextArea.add(textArea.getText());
         textArea.textProperty().addListener((observable, oldValue, newValue) -> {
                     System.out.println(" Text Changed to  " + newValue + "\tfrom  " + oldValue);
-                    System.out.println(" newValue  " + newValue + "\t last of the list " + oldValue);
+                    System.out.print(listChangeOfTextArea.toString() + "-> \t");
+                    listChangeOfTextArea.add(textArea.getText());
+                    System.out.println(listChangeOfTextArea.toString());
 
-            try {
-                        if(listChangeOfTextArea.get(listChangeOfTextArea.size() - 1) != newValue) {
-                            listChangeOfTextArea.add(textArea.getText());
-                        }
-                    }catch (IndexOutOfBoundsException e){
-                        listChangeOfTextArea.add(textArea.getText());
-
-                    }
                 }
         );
     }
