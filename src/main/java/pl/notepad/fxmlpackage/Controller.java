@@ -1,17 +1,12 @@
 package pl.notepad.fxmlpackage;
 
-import java.util.ArrayList;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import java.util.Timer;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import pl.notepad.naming.NamingMenuItems;
 import pl.notepad.openAndSaveFile.FileOpener;
 import pl.notepad.openAndSaveFile.SaveFile;
-
-import java.util.Timer;
-import java.util.TimerTask;
 import pl.notepad.textArea.ThisTextArea;
 
 public class Controller {
@@ -81,7 +76,7 @@ public class Controller {
         System.out.println("saveFile");
         saveFileClass.saveFile(textArea.getText());
 
-        if(saveFileClass.fileWasNull) {
+        if (saveFileClass.fileWasNull) {
             System.out.println("You did not choose file");
         } else {
             previousTextArea = textArea.getText();
@@ -92,16 +87,7 @@ public class Controller {
     @FXML
     public void undoOnAction() {
         System.out.println("undo");
-        ArrayList<String> arrayList = thisTextArea.getListChangeOfTextArea();
-        try {
-            int last = arrayList.size()-1;
-            arrayList.remove(last);
-            textArea.setText(arrayList.get(arrayList.size()-1));
-            arrayList.remove(last);
-        }catch (IndexOutOfBoundsException  e){
-            e.getMessage();
-        }
-
+        thisTextArea.undo();
     }
 
     public void saveFileAsOnAction() {
