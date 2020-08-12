@@ -25,6 +25,7 @@ public class Controller {
     TextArea textArea;
 
     String previousTextArea;
+    boolean textAreaWasChanged = false;
 
     NamingMenuItems nm = new NamingMenuItems(this);
 
@@ -43,7 +44,8 @@ public class Controller {
             @Override
             public void run() {
                 if(!previousTextArea.equals(textArea.getText())) {
-                    System.out.println("Change");
+                    //System.out.println("Change");
+                    textAreaWasChanged = true;
                 }
             }
         }, 0, 1000);
@@ -51,7 +53,13 @@ public class Controller {
 
     @FXML
     public void newFileOnAction() {
-        textArea.setText("");
+        if(textAreaWasChanged) {
+            // should open up a window
+            System.out.println("We wont let you make new File");
+        } else {
+            textArea.setText("");
+        }
+
         System.out.println("newFile");
     }
 
@@ -66,6 +74,7 @@ public class Controller {
         System.out.println("saveFile");
         SaveFile.saveFile(textArea.getText());
         previousTextArea = textArea.getText();
+        textAreaWasChanged = false;
     }
 
     @FXML
