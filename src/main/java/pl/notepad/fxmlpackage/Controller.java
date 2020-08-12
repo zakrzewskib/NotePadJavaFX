@@ -42,6 +42,7 @@ public class Controller {
         previousTextArea = textArea.getText();
         thisTextArea = new ThisTextArea(textArea);
 
+
 //        timer.schedule(new TimerTask() {
 //            @Override
 //            public void run() {
