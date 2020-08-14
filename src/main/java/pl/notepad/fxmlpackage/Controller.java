@@ -1,23 +1,15 @@
 package pl.notepad.fxmlpackage;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import pl.notepad.boxes.ConfirmBox;
 import pl.notepad.naming.NamingMenuItems;
 import pl.notepad.openAndSaveFile.FileOpener;
 import pl.notepad.openAndSaveFile.SaveFile;
 import pl.notepad.textArea.ThisTextArea;
+
+import java.util.Timer;
 
 public class Controller {
     ThisTextArea thisTextArea;
@@ -38,7 +30,6 @@ public class Controller {
 
     NamingMenuItems nm = new NamingMenuItems(this);
 
-    Timer timer = new Timer();
     SaveFile saveFileClass = new SaveFile();
 
     private void setNewTextToTextArea(String text) {
@@ -49,13 +40,6 @@ public class Controller {
     private void initialize() {
         nm.setNamesForFilesOption();
         thisTextArea = new ThisTextArea(textArea, this);
-
-//        timer.schedule(new TimerTask() {
-//            @Override
-//            public void run() {
-//                System.out.println("textAreaWasChanged= " + textAreaWasChanged);
-//            }
-//        }, 0, 1000);
     }
 
     private boolean textAreaIsNullOrBlank() {
@@ -66,7 +50,7 @@ public class Controller {
     public void newFileOnAction() {
         if (textAreaWasChanged) {
             System.out.println(textArea.getText());
-            if(textAreaIsNullOrBlank()) {
+            if (textAreaIsNullOrBlank()) {
                 textArea.setText("");
                 System.out.println("New file");
             } else {
@@ -112,12 +96,12 @@ public class Controller {
     }
 
     public void exitOnAction() {
-        if(textAreaWasChanged) {
-            if(textAreaIsNullOrBlank()) {
-               System.exit(0);
+        if (textAreaWasChanged) {
+            if (textAreaIsNullOrBlank()) {
+                System.exit(0);
             } else {
                 boolean wantToSave = ConfirmBox.display("NotePad", "Do you want to save?");
-                if(!wantToSave) {
+                if (!wantToSave) {
                     System.exit(0);
                 } else {
                     saveFileOnAction();
