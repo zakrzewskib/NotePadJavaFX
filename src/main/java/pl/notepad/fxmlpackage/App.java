@@ -46,11 +46,7 @@ public class App extends Application {
             @Override
             public void handle(WindowEvent windowEvent) {
                 Controller controller = new Controller();
-                if(controller.textAreaWasChanged) {
-                    System.out.println("You did not save");
-                } else {
-                    System.out.println("You saved");
-                }
+                System.out.println(controller.textAreaWasChanged); //always false??
             }
         });
     }

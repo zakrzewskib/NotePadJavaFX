@@ -1,6 +1,8 @@
 package pl.notepad.fxmlpackage;
 
 import java.util.Timer;
+import java.util.TimerTask;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
@@ -24,12 +26,7 @@ public class Controller {
     @FXML
     TextArea textArea;
 
-    String previousTextArea;
     public boolean textAreaWasChanged = false;
-
-    public boolean isTextAreaWasChanged() {
-        return textAreaWasChanged;
-    }
 
     NamingMenuItems nm = new NamingMenuItems(this);
 
@@ -43,17 +40,12 @@ public class Controller {
     @FXML
     private void initialize() {
         nm.setNamesForFilesOption();
-        previousTextArea = textArea.getText();
-        thisTextArea = new ThisTextArea(textArea);
-
+        thisTextArea = new ThisTextArea(textArea, this);
 
 //        timer.schedule(new TimerTask() {
 //            @Override
 //            public void run() {
-//                if (!previousTextArea.equals(textArea.getText())) {
-//                    System.out.println("Change");
-//                    textAreaWasChanged = true;
-//                }
+//                System.out.println("textAreaWasChanged= " + textAreaWasChanged);
 //            }
 //        }, 0, 1000);
     }
@@ -61,13 +53,15 @@ public class Controller {
     @FXML
     public void newFileOnAction() {
         if (textAreaWasChanged) {
-            // should open up a window
-            System.out.println("We wont let you make new File");
+            System.out.println(textArea.getText());
+            if(textArea.getText() == null || textArea.getText().equals("")) {
+                textArea.setText("");
+            } else {
+                System.out.println("We wont let you make new File");
+            }
         } else {
             textArea.setText("");
         }
-
-        System.out.println("newFile");
     }
 
     public void openFileOnAction() {
@@ -75,18 +69,20 @@ public class Controller {
         setNewTextToTextArea(FileOpener.readStringFromFile());
     }
 
+    private void checkIfFileWasNull() {
+        if (saveFileClass.fileWasNull) {
+            System.out.println("You did not choose file");
+        } else {
+            textAreaWasChanged = false;
+        }
+    }
+
     @FXML
     public void saveFileOnAction() {
         System.out.println(textArea.getText());
         System.out.println("saveFile");
         saveFileClass.saveFile(textArea.getText());
-
-        if (saveFileClass.fileWasNull) {
-            System.out.println("You did not choose file");
-        } else {
-            previousTextArea = textArea.getText();
-            textAreaWasChanged = false;
-        }
+        checkIfFileWasNull();
     }
 
     @FXML

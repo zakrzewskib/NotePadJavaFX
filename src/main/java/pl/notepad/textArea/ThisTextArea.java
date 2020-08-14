@@ -2,11 +2,15 @@ package pl.notepad.textArea;
 
 import java.util.ArrayList;
 import javafx.scene.control.TextArea;
+import pl.notepad.fxmlpackage.Controller;
 
 public class ThisTextArea {
     ArrayList<String> listChangeOfTextArea = new ArrayList<>();
     TextArea textArea;
-    public ThisTextArea(TextArea textArea) {
+    Controller controller;
+
+    public ThisTextArea(TextArea textArea, Controller controller) {
+        this.controller = controller;
         this.textArea = textArea;
         listChangeOfTextArea.add(textArea.getText());
         textArea.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -15,6 +19,7 @@ public class ThisTextArea {
                     listChangeOfTextArea.add(textArea.getText());
                     System.out.println(listChangeOfTextArea.toString());
 
+                    controller.textAreaWasChanged = true;
                 }
         );
     }
