@@ -4,9 +4,16 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import pl.notepad.boxes.ConfirmBox;
 import pl.notepad.naming.NamingMenuItems;
 import pl.notepad.openAndSaveFile.FileOpener;
 import pl.notepad.openAndSaveFile.SaveFile;
@@ -51,11 +58,15 @@ public class Controller {
 //        }, 0, 1000);
     }
 
+    private boolean textAreaIsNullOrBlank() {
+        return textArea.getText() == null || textArea.getText().equals("");
+    }
+
     @FXML
     public void newFileOnAction() {
         if (textAreaWasChanged) {
             System.out.println(textArea.getText());
-            if(textArea.getText() == null || textArea.getText().equals("")) {
+            if(textAreaIsNullOrBlank()) {
                 textArea.setText("");
                 System.out.println("New file");
             } else {
@@ -68,6 +79,7 @@ public class Controller {
     }
 
     public void openFileOnAction() {
+        textAreaWasChanged = false;
         System.out.println("open");
         setNewTextToTextArea(FileOpener.readStringFromFile());
     }
@@ -100,7 +112,20 @@ public class Controller {
     }
 
     public void exitOnAction() {
-        System.out.println("exit and Save");
+        if(textAreaWasChanged) {
+            if(textAreaIsNullOrBlank()) {
+               System.exit(0);
+            } else {
+                boolean wantToSave = ConfirmBox.display("NotePad", "Do you want to save?");
+                if(!wantToSave) {
+                    System.exit(0);
+                } else {
+                    saveFileOnAction();
+                }
+            }
+        } else {
+            System.exit(0);
+        }
     }
 
     public void redoOnAction() {

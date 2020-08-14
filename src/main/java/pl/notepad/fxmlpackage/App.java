@@ -1,6 +1,7 @@
 package pl.notepad.fxmlpackage;
 
 import javafx.application.Application;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -42,13 +43,10 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();
 
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent windowEvent) {
-                Controller controller = new Controller();
-                System.out.println(controller.textAreaWasChanged); //always false??
-            }
-        });
+        // How to get controller.textAreaWasChanged?
+
+        // 'I don't give a damn' solution:
+        stage.setOnCloseRequest(Event::consume);
     }
 
     static void setRoot(String fxml) throws IOException {
