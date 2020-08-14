@@ -6,6 +6,7 @@ import java.util.TimerTask;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
 import pl.notepad.naming.NamingMenuItems;
 import pl.notepad.openAndSaveFile.FileOpener;
 import pl.notepad.openAndSaveFile.SaveFile;
@@ -56,11 +57,13 @@ public class Controller {
             System.out.println(textArea.getText());
             if(textArea.getText() == null || textArea.getText().equals("")) {
                 textArea.setText("");
+                System.out.println("New file");
             } else {
                 System.out.println("We wont let you make new File");
             }
         } else {
             textArea.setText("");
+            System.out.println("New file");
         }
     }
 

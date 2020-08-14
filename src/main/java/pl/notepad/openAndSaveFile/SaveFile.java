@@ -7,7 +7,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.example.SaveFileWithFileChooser;
 
 public class SaveFile {
     private File file;
@@ -50,7 +49,7 @@ public class SaveFile {
             writer.println(content);
             writer.close();
         } catch (IOException ex) {
-            Logger.getLogger(SaveFileWithFileChooser.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SaveFile.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
