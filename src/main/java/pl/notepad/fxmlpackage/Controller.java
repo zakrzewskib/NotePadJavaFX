@@ -1,16 +1,16 @@
 package pl.notepad.fxmlpackage;
 
+import java.util.Timer;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import pl.notepad.naming.NamingMenuItems;
 import pl.notepad.openAndSaveFile.FileOpener;
 import pl.notepad.openAndSaveFile.SaveFile;
-
-import java.util.Timer;
-import java.util.TimerTask;
+import pl.notepad.textArea.ThisTextArea;
 
 public class Controller {
+    ThisTextArea thisTextArea;
     @FXML
     public MenuItem newFile;
     @FXML
@@ -44,16 +44,18 @@ public class Controller {
     private void initialize() {
         nm.setNamesForFilesOption();
         previousTextArea = textArea.getText();
+        thisTextArea = new ThisTextArea(textArea);
 
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                if (!previousTextArea.equals(textArea.getText())) {
-                    System.out.println("Change");
-                    textAreaWasChanged = true;
-                }
-            }
-        }, 0, 1000);
+
+//        timer.schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//                if (!previousTextArea.equals(textArea.getText())) {
+//                    System.out.println("Change");
+//                    textAreaWasChanged = true;
+//                }
+//            }
+//        }, 0, 1000);
     }
 
     @FXML
@@ -79,7 +81,7 @@ public class Controller {
         System.out.println("saveFile");
         saveFileClass.saveFile(textArea.getText());
 
-        if(saveFileClass.fileWasNull) {
+        if (saveFileClass.fileWasNull) {
             System.out.println("You did not choose file");
         } else {
             previousTextArea = textArea.getText();
@@ -90,6 +92,7 @@ public class Controller {
     @FXML
     public void undoOnAction() {
         System.out.println("undo");
+        thisTextArea.undo();
     }
 
     public void saveFileAsOnAction() {
