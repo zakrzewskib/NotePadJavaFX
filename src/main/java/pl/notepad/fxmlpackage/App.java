@@ -46,7 +46,7 @@ public class App extends Application {
         // How to get controller.textAreaWasChanged?
 
         // 'I don't give a damn' solution:
-        stage.setOnCloseRequest(Event::consume);
+        //stage.setOnCloseRequest(Event::consume); //watch out - you can only exit using File -> Exit
     }
 
     static void setRoot(String fxml) throws IOException {
