@@ -77,9 +77,9 @@ public class Controller {
     }
 
     public void openFileOnAction() {
-        textAreaWasChanged = false;
         System.out.println("open");
         setNewTextToTextArea(FileOpener.readStringFromFile());
+        textAreaWasChanged = false;
     }
 
     private void checkIfFileWasNull() {
