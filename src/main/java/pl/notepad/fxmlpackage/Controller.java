@@ -46,40 +46,34 @@ public class Controller {
         return textArea.getText() == null || textArea.getText().equals("");
     }
 
-    @FXML
-    public void newFileOnAction() {
-        if (textAreaWasChanged) {
-            if (textAreaIsNullOrBlank()) {
-                textArea.setText("");
-                System.out.println("New file");
-            } else {
-                boolean wantToSave = ConfirmBox.display("NotePad", "Do you want to save?");
-                if (wantToSave) {
-                    saveFileOnAction();
-                } else {
-                    textArea.setText("");
-                }
-            }
-        } else {
+    private void exitOrNew(String action) {
+        if (action.equals("new")) {
             textArea.setText("");
+        } else if (action.equals("exit")){
+            System.exit(0);
         }
     }
 
-    public void exitOnAction() {
-        if (textAreaWasChanged) {
-            if (textAreaIsNullOrBlank()) {
-                System.exit(0);
-            } else {
-                boolean wantToSave = ConfirmBox.display("NotePad", "Do you want to save?");
-                if (!wantToSave) {
-                    System.exit(0);
-                } else {
-                    saveFileOnAction();
-                }
-            }
+    private void displayConfirmBox(String action) {
+        if (textAreaIsNullOrBlank() || !textAreaWasChanged) {
+            exitOrNew(action);
         } else {
-            System.exit(0);
+            boolean wantToSave = ConfirmBox.display("NotePad", "Do you want to save?");
+            if (wantToSave) {
+                saveFileOnAction();
+            } else {
+                exitOrNew(action);
+            }
         }
+    }
+
+    @FXML
+    public void newFileOnAction() {
+        displayConfirmBox("new");
+    }
+
+    public void exitOnAction() {
+        displayConfirmBox("exit");
     }
 
     public void openFileOnAction() {
