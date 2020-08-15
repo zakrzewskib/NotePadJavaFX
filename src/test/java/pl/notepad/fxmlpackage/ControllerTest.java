@@ -10,19 +10,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ControllerTest {
 
-    Controller controller;
-
-    @BeforeEach
-    void setUp() {
-        //Controller controller = Mockito.mock(Controller.class);
-        Controller controller = new Controller();
-    }
-
-    @Test
-    void displayConfirmBox() {
-        controller.displayConfirmBox("new");
-        controller.textArea.setText("");
-        assertEquals(controller.textArea.getText(), "");
-    }
+//    Controller controller;
+//
+//    @BeforeEach
+//    void setUp() {
+//        //Controller controller = Mockito.mock(Controller.class);
+//        Controller controller = new Controller();
+//    }
+//
+//    @Test
+//    void displayConfirmBox() {
+//        controller.displayConfirmBox("new");
+//        controller.textArea.setText("");
+//        assertEquals(controller.textArea.getText(), "");
+//    }
 
 }
