@@ -49,16 +49,36 @@ public class Controller {
     @FXML
     public void newFileOnAction() {
         if (textAreaWasChanged) {
-            System.out.println(textArea.getText());
             if (textAreaIsNullOrBlank()) {
                 textArea.setText("");
                 System.out.println("New file");
             } else {
-                System.out.println("We wont let you make new File");
+                boolean wantToSave = ConfirmBox.display("NotePad", "Do you want to save?");
+                if (wantToSave) {
+                    saveFileOnAction();
+                } else {
+                    textArea.setText("");
+                }
             }
         } else {
             textArea.setText("");
-            System.out.println("New file");
+        }
+    }
+
+    public void exitOnAction() {
+        if (textAreaWasChanged) {
+            if (textAreaIsNullOrBlank()) {
+                System.exit(0);
+            } else {
+                boolean wantToSave = ConfirmBox.display("NotePad", "Do you want to save?");
+                if (!wantToSave) {
+                    System.exit(0);
+                } else {
+                    saveFileOnAction();
+                }
+            }
+        } else {
+            System.exit(0);
         }
     }
 
@@ -93,23 +113,6 @@ public class Controller {
     public void saveFileAsOnAction() {
         System.out.println("saveFileAs");
         saveFileClass.saveFileAs(textArea.getText());
-    }
-
-    public void exitOnAction() {
-        if (textAreaWasChanged) {
-            if (textAreaIsNullOrBlank()) {
-                System.exit(0);
-            } else {
-                boolean wantToSave = ConfirmBox.display("NotePad", "Do you want to save?");
-                if (!wantToSave) {
-                    System.exit(0);
-                } else {
-                    saveFileOnAction();
-                }
-            }
-        } else {
-            System.exit(0);
-        }
     }
 
     public void redoOnAction() {
