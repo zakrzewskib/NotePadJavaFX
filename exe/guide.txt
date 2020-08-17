@@ -1,0 +1,2 @@
+If you have javafx-sdk-14.0.1 in the same folder with notepad.exe you can open it with double click.
+(Thanks to Launch4j)
