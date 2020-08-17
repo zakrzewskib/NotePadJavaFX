@@ -14,11 +14,7 @@ public class ThisTextArea {
         this.textArea = textArea;
         listChangeOfTextArea.add(textArea.getText());
         textArea.textProperty().addListener((observable, oldValue, newValue) -> {
-                    System.out.println(" Text Changed to  " + newValue + "\tfrom  " + oldValue);
-                    System.out.print(listChangeOfTextArea.toString() + "-> \t");
                     listChangeOfTextArea.add(textArea.getText());
-                    System.out.println(listChangeOfTextArea.toString());
-
                     controller.textAreaWasChanged = true;
                 }
         );
