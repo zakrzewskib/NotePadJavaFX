@@ -9,11 +9,11 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class SaveFile {
-    private File file;
+    private static File file;
     public boolean fileWasNull = true;
 
-     public void setFile(File file) {
-        this.file = file;
+     public static void setFile(File file) {
+        SaveFile.file = file;
     }
 
     public void saveFileAs(String text) {
