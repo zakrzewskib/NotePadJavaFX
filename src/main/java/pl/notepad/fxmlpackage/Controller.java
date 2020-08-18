@@ -72,6 +72,7 @@ public class Controller {
         displayConfirmBox("new");
     }
 
+    // It handles now two MenuItems
     public void exitOnAction() {
         displayConfirmBox("exit");
     }
