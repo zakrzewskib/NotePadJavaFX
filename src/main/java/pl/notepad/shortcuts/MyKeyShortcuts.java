@@ -5,11 +5,16 @@ import javafx.application.Platform;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
+import pl.notepad.fxmlpackage.App;
 import pl.notepad.fxmlpackage.Controller;
 
 public class MyKeyShortcuts {
-
-    Controller controller = new Controller();
+    App app;
+    Controller controller;
+    public MyKeyShortcuts(App app) {
+        this.app = app;
+        controller = app.getController();
+    }
 
     public KeyCombination getCtrlPlusN() {
         return new KeyCodeCombination(KeyCode.N, KeyCodeCombination.CONTROL_ANY);
@@ -19,8 +24,7 @@ public class MyKeyShortcuts {
         return new Runnable() {
             @Override
             public void run() {
-                //controller.newFileOnAction();
-                System.out.println("should new");
+                controller.newFileOnAction();
             }
         };
     }
@@ -42,15 +46,11 @@ public class MyKeyShortcuts {
         return new KeyCodeCombination(KeyCode.S, KeyCodeCombination.CONTROL_ANY);
     }
 
-    // getting textArea is complicated 'because Threads'
-    // https://stackoverflow.com/questions/31408363/javafx-changelistener-not-always-working/31414801#31414801
     public Runnable getRunnableForCtrlPlusS() {
         return new Runnable() {
             @Override
             public void run() {
-                //controller.saveFileOnAction(); // does not work
-                //Platform.runLater(() -> controller.saveFileOnAction()); // does not work
-                System.out.println("should be saving");
+                controller.saveFileOnAction(); // does not work
             }
         };
     }

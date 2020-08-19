@@ -19,7 +19,7 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
-    private final MyKeyShortcuts keyShortcuts = new MyKeyShortcuts();
+    private MyKeyShortcuts keyShortcuts;
 
     // Adding keyShortcuts in App (where the scene is) prevents Exceptions
     private void addShortCut(KeyCombination k, Runnable r) {
@@ -34,13 +34,15 @@ public class App extends Application {
 
     Controller controller;
 
+    public Controller getController() {
+        return this.controller;
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
         stage.setTitle("NotePad");
 
         scene = new Scene(loadFXML("notePadLayout"));
-
-        addShortCuts();
 
         stage.setScene(scene);
         stage.show();
@@ -48,6 +50,10 @@ public class App extends Application {
         controller = fxmlLoader.getController();
         // getting JavaFX Controller:
         // https://stackoverflow.com/questions/10751271/accessing-fxml-controller-class
+
+        keyShortcuts = new MyKeyShortcuts(this);
+        addShortCuts();
+
         stage.setOnCloseRequest(
                 new EventHandler<WindowEvent>() {
                     @Override
