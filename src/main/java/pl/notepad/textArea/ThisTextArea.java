@@ -19,6 +19,10 @@ public class ThisTextArea {
                     listChangeOfTextArea.add(textArea.getText());
                     System.out.println(listChangeOfTextArea.toString());
 
+                    // Another reset? - for example:
+                    // values are really small - for the test
+                    deleteFirstSavedChanges(10, 5);
+
                     controller.textAreaWasChanged = true;
                 }
         );
@@ -27,6 +31,19 @@ public class ThisTextArea {
     public ArrayList<String> getListChangeOfTextArea() {
         return listChangeOfTextArea;
     }
+
+    public void deleteFirstSavedChanges(int maxSize, int elements) {
+        if(listChangeOfTextArea.size() > maxSize) {
+            if (elements > 0) {
+                listChangeOfTextArea.subList(0, elements).clear();
+            }
+        }
+    }
+
+    public void resetListChangeOfTextArea() {
+        listChangeOfTextArea = new ArrayList<>();
+    }
+
     public void undo(){
         try {
             int last = listChangeOfTextArea.size() - 1;

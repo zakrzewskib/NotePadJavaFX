@@ -76,6 +76,7 @@ public class Controller {
     @FXML
     public void newFileOnAction() {
         SaveFile.setFile(null);
+        thisTextArea.resetListChangeOfTextArea();
         displayConfirmBox("new");
     }
 

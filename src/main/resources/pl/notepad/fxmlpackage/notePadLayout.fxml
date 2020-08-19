@@ -45,7 +45,7 @@
 
                         <Menu mnemonicParsing="false" text="Edit">
                             <items>
-                                <MenuItem mnemonicParsing="false" onAction="#undoOnAction" text="Undo" />
+                                <MenuItem mnemonicParsing="false" onAction="#undoOnAction" text="My Undo" />
                                 <SeparatorMenuItem mnemonicParsing="false" />
                                 <MenuItem mnemonicParsing="false" onAction="#redoOnAction" text="Redo" />
                                 <MenuItem mnemonicParsing="false" onAction="#cutOnAction" text="Cut" />
