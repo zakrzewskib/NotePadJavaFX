@@ -55,7 +55,7 @@
 
                         <Menu mnemonicParsing="false" text="Format">
                             <items>
-                                <CheckMenuItem mnemonicParsing="false" onAction="#wordWrapOnAction" text="Word Wrap" />
+                                <CheckMenuItem fx:id="wordWrapCheck" mnemonicParsing="false" onAction="#wordWrapOnAction" text="Word Wrap" />
                                 <MenuItem mnemonicParsing="false" onAction="#fontOnAction" text="Font" />
                             </items>
                         </Menu>

@@ -1,6 +1,7 @@
 package pl.notepad.fxmlpackage;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import pl.notepad.boxes.ConfirmBox;
@@ -25,6 +26,9 @@ public class Controller {
     public MenuItem exit;
     @FXML
     TextArea textArea;
+
+    @FXML
+    CheckMenuItem wordWrapCheck;
 
     public boolean textAreaWasChanged = false;
 
@@ -110,6 +114,10 @@ public class Controller {
         saveFileClass.saveFileAs(textArea.getText());
     }
 
+    public void wordWrapOnAction() {
+        textArea.setWrapText(wordWrapCheck.isSelected());
+    }
+
     public void redoOnAction() {
         System.out.println("redo");
     }
@@ -132,10 +140,6 @@ public class Controller {
 
     public void selectAllOnAction() {
         System.out.println("selectAll");
-    }
-
-    public void wordWrapOnAction() {
-        System.out.println("wordWrap");
     }
 
     public void fontOnAction() {
