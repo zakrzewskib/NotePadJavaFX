@@ -10,12 +10,16 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.notepad.fxmlpackage.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.notepad.fxmlpackage.Controller">
     <bottom>
-        <HBox BorderPane.alignment="CENTER">
+        <HBox fx:id="statusBar" BorderPane.alignment="CENTER">
             <children>
-                <Label fx:id="labelDownside" text="Label" />
+            <Region prefHeight="18.0" prefWidth="466.0" />
+                <Label fx:id="labelDownside" prefHeight="18.0" prefWidth="114.0" text="Line number:" />
+            <Label prefHeight="18.0" prefWidth="40.0" text="100%" />
+            <Label prefHeight="18.0" prefWidth="87.0" text="Windows/Linux" />
             </children>
             <BorderPane.margin>
                 <Insets />
@@ -68,7 +72,7 @@
                                         <MenuItem mnemonicParsing="false" onAction="#zoomOutOnAction" text="Zoom Out" />
                                     </items>
                                 </Menu>
-                                <CheckMenuItem mnemonicParsing="false" onAction="#statusBarOnAction" selected="true" text="Status Bar" />
+                                <CheckMenuItem fx:id="statusBarCheck" mnemonicParsing="false" onAction="#statusBarOnAction" selected="true" text="Status Bar" />
                             </items>
                         </Menu>
 

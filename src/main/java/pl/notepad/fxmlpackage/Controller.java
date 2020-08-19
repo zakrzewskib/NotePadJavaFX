@@ -4,13 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.HBox;
 import pl.notepad.boxes.ConfirmBox;
 import pl.notepad.naming.NamingMenuItems;
 import pl.notepad.openAndSaveFile.FileOpener;
 import pl.notepad.openAndSaveFile.SaveFile;
 import pl.notepad.textArea.ThisTextArea;
-
-import java.util.Timer;
 
 public class Controller {
     ThisTextArea thisTextArea;
@@ -26,9 +25,12 @@ public class Controller {
     public MenuItem exit;
     @FXML
     TextArea textArea;
-
     @FXML
     CheckMenuItem wordWrapCheck;
+    @FXML
+    CheckMenuItem statusBarCheck;
+    @FXML
+    HBox statusBar;
 
     public boolean textAreaWasChanged = false;
 
@@ -53,7 +55,7 @@ public class Controller {
     private void exitOrNew(String action) {
         if (action.equals("new")) {
             textArea.setText("");
-        } else if (action.equals("exit")){
+        } else if (action.equals("exit")) {
             System.exit(0);
         }
     }
@@ -118,6 +120,12 @@ public class Controller {
         textArea.setWrapText(wordWrapCheck.isSelected());
     }
 
+    public void statusBarOnAction() {
+        // https://stackoverflow.com/questions/12200195/javafx-hbox-hide-item
+        statusBar.managedProperty().bind(statusBar.visibleProperty());
+        statusBar.setVisible(statusBarCheck.isSelected());
+    }
+
     public void redoOnAction() {
         System.out.println("redo");
     }
@@ -152,10 +160,6 @@ public class Controller {
 
     public void zoomOutOnAction() {
         System.out.println("zoomOut");
-    }
-
-    public void statusBarOnAction() {
-        System.out.println("statusBar");
     }
 
     public void aboutOnAction() {
