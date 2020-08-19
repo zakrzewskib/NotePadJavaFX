@@ -32,6 +32,8 @@ public class App extends Application {
         addShortCut(keyShortcuts.getCtrlPlusS(), keyShortcuts.getRunnableForCtrlPlusS());
     }
 
+    Controller controller;
+
     @Override
     public void start(Stage stage) throws IOException {
         stage.setTitle("NotePad");
@@ -43,16 +45,26 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();
 
-        // How to get controller.textAreaWasChanged?
-        stage.setOnCloseRequest(Event::consume); //watch out - you can only exit using File -> Exit or Exit -> Exit
+        controller = fxmlLoader.getController();
+        // getting JavaFX Controller:
+        // https://stackoverflow.com/questions/10751271/accessing-fxml-controller-class
+        stage.setOnCloseRequest(
+                new EventHandler<WindowEvent>() {
+                    @Override
+                    public void handle(WindowEvent windowEvent) {
+                        controller.exitOnAction();
+                    }
+                }
+        );
     }
 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
+    static FXMLLoader fxmlLoader;
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
