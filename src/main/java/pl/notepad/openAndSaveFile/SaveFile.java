@@ -25,7 +25,7 @@ public class SaveFile {
         fileChooser.getExtensionFilters().add(extFilter);
 
         //Show save file dialog
-        File file = fileChooser.showSaveDialog(new Stage());
+        file = fileChooser.showSaveDialog(new Stage());
 
         if (file != null) {
             fileWasNull = false;

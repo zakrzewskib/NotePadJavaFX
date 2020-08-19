@@ -75,6 +75,7 @@ public class Controller {
 
     @FXML
     public void newFileOnAction() {
+        SaveFile.setFile(null);
         displayConfirmBox("new");
     }
 
