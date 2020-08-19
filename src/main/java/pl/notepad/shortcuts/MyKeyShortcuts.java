@@ -20,12 +20,7 @@ public class MyKeyShortcuts {
     }
 
     public Runnable getRunnableForCtrlPlusN() {
-        return new Runnable() {
-            @Override
-            public void run() {
-                controller.newFileOnAction();
-            }
-        };
+        return () -> controller.newFileOnAction();
     }
 
     public KeyCombination getCtrlPlusO() {
@@ -33,12 +28,7 @@ public class MyKeyShortcuts {
     }
 
     public Runnable getRunnableForCtrlPlusO() {
-        return new Runnable() {
-            @Override
-            public void run() {
-                controller.openFileOnAction();
-            }
-        };
+        return () -> controller.openFileOnAction();
     }
 
     public KeyCombination getCtrlPlusS() {
@@ -46,11 +36,6 @@ public class MyKeyShortcuts {
     }
 
     public Runnable getRunnableForCtrlPlusS() {
-        return new Runnable() {
-            @Override
-            public void run() {
-                controller.saveFileOnAction();
-            }
-        };
+        return () -> controller.saveFileOnAction();
     }
 }
