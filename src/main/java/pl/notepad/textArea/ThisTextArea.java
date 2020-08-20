@@ -24,6 +24,7 @@ public class ThisTextArea {
                     deleteFirstSavedChanges(10, 5);
 
                     controller.textAreaWasChanged = true;
+                    controller.setNewAppTitle();
                 }
         );
     }

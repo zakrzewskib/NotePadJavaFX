@@ -89,6 +89,7 @@ public class Controller {
         System.out.println("open");
         setNewTextToTextArea(FileOpener.readStringFromFile());
         textAreaWasChanged = false;
+        setNewAppTitle();
     }
 
     private void checkIfFileWasNull() {
@@ -105,6 +106,21 @@ public class Controller {
         System.out.println("saveFile");
         saveFileClass.saveFile(textArea.getText());
         checkIfFileWasNull();
+        setNewAppTitle();
+    }
+
+    public void setNewAppTitle() {
+        StringBuilder stringBuilder = new StringBuilder();
+        if(textAreaWasChanged) {
+            stringBuilder.append("*");
+        }
+        if(SaveFile.getFile() != null) {
+            stringBuilder.append(SaveFile.getFile().getName());
+            stringBuilder.append(" -- NotePad");
+        } else {
+            stringBuilder.append("No Title -- NotePad");
+        }
+        App.getInstance().myStage.setTitle(stringBuilder.toString());
     }
 
     @FXML
@@ -116,6 +132,7 @@ public class Controller {
     public void saveFileAsOnAction() {
         System.out.println("saveFileAs");
         saveFileClass.saveFileAs(textArea.getText());
+        setNewAppTitle();
     }
 
     public void wordWrapOnAction() {
