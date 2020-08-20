@@ -16,6 +16,10 @@ public class SaveFile {
         SaveFile.file = file;
     }
 
+    public static File getFile() {
+        return file;
+    }
+
     public void saveFileAs(String text) {
 
         FileChooser fileChooser = new FileChooser();
