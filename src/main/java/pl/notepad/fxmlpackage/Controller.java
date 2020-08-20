@@ -42,8 +42,15 @@ public class Controller {
         textArea.setText(text);
     }
 
+    private static Controller instance;
+
+    public static Controller getInstance() {
+        return instance;
+    }
+
     @FXML
     private void initialize() {
+        instance = this;
         nm.setNamesForFilesOption();
         thisTextArea = new ThisTextArea(textArea, this);
     }

@@ -55,7 +55,9 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();
 
-        controller = fxmlLoader.getController();
+//        controller = fxmlLoader.getController();
+        controller = Controller.getInstance();
+
         keyShortcuts = new MyKeyShortcuts(this);
         addShortCuts();
 
