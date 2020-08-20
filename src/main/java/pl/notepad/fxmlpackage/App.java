@@ -1,6 +1,7 @@
 package pl.notepad.fxmlpackage;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -61,8 +62,24 @@ public class App extends Application {
         keyShortcuts = new MyKeyShortcuts(this);
         addShortCuts();
 
-        stage.setOnCloseRequest(e -> controller.exitOnAction());
+
+        // !!!
+
+        // Normal exit
+        //stage.setOnCloseRequest(e -> controller.exitOnAction());
+
+        // For Tests, No System.exit(0) allows tests to be executed
+        stage.setOnCloseRequest(e -> {
+            mainThread = Thread.currentThread();
+            Platform.exit();
+        });
     }
+
+    public void exit() {
+        myStage.close();
+    }
+
+    public Thread mainThread;
 
     static FXMLLoader fxmlLoader;
 
