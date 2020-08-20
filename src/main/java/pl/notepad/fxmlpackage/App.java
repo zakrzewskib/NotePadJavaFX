@@ -61,7 +61,10 @@ public class App extends Application {
         keyShortcuts = new MyKeyShortcuts(this);
         addShortCuts();
 
-        stage.setOnCloseRequest(e -> controller.exitOnAction());
+        stage.setOnCloseRequest(e -> {
+            e.consume();
+            controller.exitOnAction();
+        });
     }
 
     static FXMLLoader fxmlLoader;

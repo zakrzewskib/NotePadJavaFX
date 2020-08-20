@@ -72,10 +72,13 @@ public class Controller {
             exitOrNew(action);
         } else {
             boolean wantToSave = ConfirmBox.display("NotePad", "Do you want to save?");
-            if (wantToSave) {
-                saveFileOnAction();
-            } else {
-                exitOrNew(action);
+
+            if(ConfirmBox.somethingWasChosen) {
+                if (wantToSave) {
+                    saveFileOnAction();
+                } else {
+                    exitOrNew(action);
+                }
             }
         }
     }

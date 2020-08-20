@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 public class ConfirmBox {
 
     static boolean answer;
+    public static boolean somethingWasChosen = false;
 
     public static boolean display(String title, String message) {
         Stage window = new Stage();
@@ -25,11 +26,13 @@ public class ConfirmBox {
 
         yesButton.setOnAction(e -> {
             answer = true;
+            somethingWasChosen = true;
             window.close();
         });
 
         noButton.setOnAction(e -> {
             answer = false;
+            somethingWasChosen = true;
             window.close();
         });
 
