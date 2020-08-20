@@ -10,7 +10,6 @@ import javafx.stage.Stage;
 import pl.notepad.shortcuts.MyKeyShortcuts;
 
 import java.io.IOException;
-import java.util.Timer;
 
 /**
  * JavaFX App
@@ -62,24 +61,15 @@ public class App extends Application {
         keyShortcuts = new MyKeyShortcuts(this);
         addShortCuts();
 
-
         // !!!
-
         // Normal exit
         //stage.setOnCloseRequest(e -> controller.exitOnAction());
 
         // For Tests, No System.exit(0) allows tests to be executed
         stage.setOnCloseRequest(e -> {
-            mainThread = Thread.currentThread();
             Platform.exit();
         });
     }
-
-    public void exit() {
-        myStage.close();
-    }
-
-    public Thread mainThread;
 
     static FXMLLoader fxmlLoader;
 
