@@ -75,9 +75,8 @@ public class Controller {
             if (ConfirmBox.somethingWasChosen) {
                 if (wantToSave) {
                     saveFileOnAction();
-                } else {
-                    exitOrNew(action);
                 }
+                exitOrNew(action);
             }
         }
     }
