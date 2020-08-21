@@ -94,10 +94,12 @@ public class Controller {
     }
 
     public void openFileOnAction() {
-        System.out.println("open");
-        setNewTextToTextArea(FileOpener.readStringFromFile());
-        textAreaWasChanged = false;
-        setNewAppTitle();
+        String open = FileOpener.readStringFromFile();
+        if(open != null) {
+            setNewTextToTextArea(open);
+            textAreaWasChanged = false;
+            setNewAppTitle();
+        }
     }
 
     private void checkIfFileWasNull() {
