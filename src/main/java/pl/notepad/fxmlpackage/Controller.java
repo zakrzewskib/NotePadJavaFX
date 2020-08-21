@@ -72,8 +72,7 @@ public class Controller {
             exitOrNew(action);
         } else {
             boolean wantToSave = ConfirmBox.display("NotePad", "Do you want to save?");
-
-            if(ConfirmBox.somethingWasChosen) {
+            if (ConfirmBox.somethingWasChosen) {
                 if (wantToSave) {
                     saveFileOnAction();
                 } else {
@@ -90,7 +89,6 @@ public class Controller {
         displayConfirmBox("new");
     }
 
-    // It handles now two MenuItems
     public void exitOnAction() {
         displayConfirmBox("exit");
     }
@@ -121,10 +119,10 @@ public class Controller {
 
     public void setNewAppTitle() {
         StringBuilder stringBuilder = new StringBuilder();
-        if(textAreaWasChanged) {
+        if (textAreaWasChanged) {
             stringBuilder.append("*");
         }
-        if(SaveFile.getFile() != null) {
+        if (SaveFile.getFile() != null) {
             stringBuilder.append(SaveFile.getFile().getName());
             stringBuilder.append(" -- NotePad");
         } else {
@@ -150,9 +148,12 @@ public class Controller {
     }
 
     public void statusBarOnAction() {
-        // https://stackoverflow.com/questions/12200195/javafx-hbox-hide-item
         statusBar.managedProperty().bind(statusBar.visibleProperty());
         statusBar.setVisible(statusBarCheck.isSelected());
+    }
+
+    public void aboutOnAction() {
+        App.getInstance().getHostServices().showDocument("https://github.com/zakrzewskib/NotePadJavaFX");
     }
 
     public void redoOnAction() {
@@ -191,7 +192,4 @@ public class Controller {
         System.out.println("zoomOut");
     }
 
-    public void aboutOnAction() {
-        System.out.println("about");
-    }
 }
