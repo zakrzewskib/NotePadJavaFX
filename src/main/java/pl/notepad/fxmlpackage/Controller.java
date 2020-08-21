@@ -59,37 +59,47 @@ public class Controller {
         return textArea.getText() == null || textArea.getText().equals("");
     }
 
-    private void exitOrNew(String action) {
-        if (action.equals("new")) {
-            textArea.setText("");
-        } else if (action.equals("exit")) {
+    private void displayConfirmBoxToExit() {
+        if (!textAreaWasChanged) {
             System.exit(0);
-        }
-    }
-
-    private void displayConfirmBox(String action) {
-        if (textAreaIsNullOrBlank() || !textAreaWasChanged) {
-            exitOrNew(action);
         } else {
             boolean wantToSave = ConfirmBox.display("NotePad", "Do you want to save?");
             if (ConfirmBox.somethingWasChosen) {
                 if (wantToSave) {
                     saveFileOnAction();
                 }
-                exitOrNew(action);
+                System.exit(0);
             }
         }
     }
 
+    private void displayConfirmBoxToNew() {
+        if (textAreaIsNullOrBlank() || !textAreaWasChanged) {
+            textArea.setText("");
+        } else {
+            boolean wantToSave = ConfirmBox.display("NotePad", "Do you want to save?");
+            if (ConfirmBox.somethingWasChosen) {
+                if (wantToSave) {
+                    saveFileOnAction();
+                }
+                SaveFile.setFile(null);
+                thisTextArea.resetListChangeOfTextArea();
+                wasNewFile = true;
+                setNewAppTitle();
+                textArea.setText("");
+            }
+        }
+    }
+
+    public boolean wasNewFile = false;
+
     @FXML
     public void newFileOnAction() {
-        SaveFile.setFile(null);
-        thisTextArea.resetListChangeOfTextArea();
-        displayConfirmBox("new");
+        displayConfirmBoxToNew();
     }
 
     public void exitOnAction() {
-        displayConfirmBox("exit");
+        displayConfirmBoxToExit();
     }
 
     public void openFileOnAction() {
@@ -116,6 +126,10 @@ public class Controller {
         saveFileClass.saveFile(textArea.getText());
         checkIfFileWasNull();
         setNewAppTitle();
+    }
+
+    public void setNewAppTitleForNewFile() {
+        App.getInstance().myStage.setTitle("No Title -- NotePad");
     }
 
     public void setNewAppTitle() {
