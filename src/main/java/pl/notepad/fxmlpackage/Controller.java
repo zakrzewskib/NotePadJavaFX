@@ -1,5 +1,6 @@
 package pl.notepad.fxmlpackage;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.MenuItem;
@@ -59,16 +60,25 @@ public class Controller {
         return textArea.getText() == null || textArea.getText().equals("");
     }
 
-    private void displayConfirmBoxToExit() {
+    // Exit for tests is now here
+    private void displayConfirmBoxToExit(boolean tests) {
         if (!textAreaWasChanged) {
-            System.exit(0);
+            if (!tests) {
+                System.exit(0);
+            } else {
+                Platform.exit();
+            }
         } else {
             boolean wantToSave = ConfirmBox.display("NotePad", "Do you want to save?");
             if (ConfirmBox.somethingWasChosen) {
                 if (wantToSave) {
                     saveFileOnAction();
                 }
-                System.exit(0);
+                if (!tests) {
+                    System.exit(0);
+                } else {
+                    Platform.exit();
+                }
             }
         }
     }
@@ -98,8 +108,10 @@ public class Controller {
         displayConfirmBoxToNew();
     }
 
+    // Exit for tests is now here
     public void exitOnAction() {
-        displayConfirmBoxToExit();
+        boolean tests = false;
+        displayConfirmBoxToExit(tests);
     }
 
     public void openFileOnAction() {

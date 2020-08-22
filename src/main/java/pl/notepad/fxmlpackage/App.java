@@ -61,14 +61,7 @@ public class App extends Application {
         keyShortcuts = new MyKeyShortcuts(this);
         addShortCuts();
 
-        // !!!
-        // Normal exit
         stage.setOnCloseRequest(e -> controller.exitOnAction());
-
-        // For Tests, No System.exit(0) allows tests to be executed
-//        stage.setOnCloseRequest(e -> {
-//            Platform.exit();
-//        });
     }
 
     static FXMLLoader fxmlLoader;
