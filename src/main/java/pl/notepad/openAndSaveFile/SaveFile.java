@@ -20,9 +20,20 @@ public class SaveFile {
         return file;
     }
 
+    public static void setInitialDirectory(FileChooser fileChooser) {
+        if(file != null) {
+            String url = file.getPath();
+            String path = url.substring(0, url.lastIndexOf(File.separator)+1);
+            File file = new File(path);
+            fileChooser.setInitialDirectory(file);
+            System.out.println(file.getPath());
+        }
+    }
+
     public void saveFileAs(String text) {
 
         FileChooser fileChooser = new FileChooser();
+        setInitialDirectory(fileChooser);
 
         //Set extension filter for text files
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");

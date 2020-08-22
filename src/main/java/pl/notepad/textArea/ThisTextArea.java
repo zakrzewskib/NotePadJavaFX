@@ -23,8 +23,16 @@ public class ThisTextArea {
                     // values are really small - for the test
                     deleteFirstSavedChanges(10, 5);
 
-                    controller.textAreaWasChanged = true;
-                    controller.setNewAppTitle();
+
+
+                    if(controller.wasNewFile) {
+                        controller.setNewAppTitleForNewFile();
+                        controller.textAreaWasChanged = false;
+                        controller.wasNewFile = false;
+                    } else {
+                        controller.setNewAppTitle();
+                        controller.textAreaWasChanged = true;
+                    }
                 }
         );
     }

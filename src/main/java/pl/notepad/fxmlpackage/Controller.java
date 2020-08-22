@@ -59,44 +59,56 @@ public class Controller {
         return textArea.getText() == null || textArea.getText().equals("");
     }
 
-    private void exitOrNew(String action) {
-        if (action.equals("new")) {
-            textArea.setText("");
-        } else if (action.equals("exit")) {
+    private void displayConfirmBoxToExit() {
+        if (!textAreaWasChanged) {
             System.exit(0);
-        }
-    }
-
-    private void displayConfirmBox(String action) {
-        if (textAreaIsNullOrBlank() || !textAreaWasChanged) {
-            exitOrNew(action);
         } else {
             boolean wantToSave = ConfirmBox.display("NotePad", "Do you want to save?");
-            if (wantToSave) {
-                saveFileOnAction();
-            } else {
-                exitOrNew(action);
+            if (ConfirmBox.somethingWasChosen) {
+                if (wantToSave) {
+                    saveFileOnAction();
+                }
+                System.exit(0);
             }
         }
     }
 
-    @FXML
-    public void newFileOnAction() {
-        SaveFile.setFile(null);
-        thisTextArea.resetListChangeOfTextArea();
-        displayConfirmBox("new");
+    private void displayConfirmBoxToNew() {
+        if (textAreaIsNullOrBlank() || !textAreaWasChanged) {
+            textArea.setText("");
+        } else {
+            boolean wantToSave = ConfirmBox.display("NotePad", "Do you want to save?");
+            if (ConfirmBox.somethingWasChosen) {
+                if (wantToSave) {
+                    saveFileOnAction();
+                }
+                SaveFile.setFile(null);
+                thisTextArea.resetListChangeOfTextArea();
+                wasNewFile = true;
+                setNewAppTitle();
+                textArea.setText("");
+            }
+        }
     }
 
-    // It handles now two MenuItems
+    public boolean wasNewFile = false;
+
+    @FXML
+    public void newFileOnAction() {
+        displayConfirmBoxToNew();
+    }
+
     public void exitOnAction() {
-        displayConfirmBox("exit");
+        displayConfirmBoxToExit();
     }
 
     public void openFileOnAction() {
-        System.out.println("open");
-        setNewTextToTextArea(FileOpener.readStringFromFile());
-        textAreaWasChanged = false;
-        setNewAppTitle();
+        String open = FileOpener.readStringFromFile();
+        if(open != null) {
+            setNewTextToTextArea(open);
+            textAreaWasChanged = false;
+            setNewAppTitle();
+        }
     }
 
     private void checkIfFileWasNull() {
@@ -116,12 +128,16 @@ public class Controller {
         setNewAppTitle();
     }
 
+    public void setNewAppTitleForNewFile() {
+        App.getInstance().myStage.setTitle("No Title -- NotePad");
+    }
+
     public void setNewAppTitle() {
         StringBuilder stringBuilder = new StringBuilder();
-        if(textAreaWasChanged) {
+        if (textAreaWasChanged) {
             stringBuilder.append("*");
         }
-        if(SaveFile.getFile() != null) {
+        if (SaveFile.getFile() != null) {
             stringBuilder.append(SaveFile.getFile().getName());
             stringBuilder.append(" -- NotePad");
         } else {
@@ -147,9 +163,12 @@ public class Controller {
     }
 
     public void statusBarOnAction() {
-        // https://stackoverflow.com/questions/12200195/javafx-hbox-hide-item
         statusBar.managedProperty().bind(statusBar.visibleProperty());
         statusBar.setVisible(statusBarCheck.isSelected());
+    }
+
+    public void aboutOnAction() {
+        App.getInstance().getHostServices().showDocument("https://github.com/zakrzewskib/NotePadJavaFX");
     }
 
     public void redoOnAction() {
@@ -188,7 +207,4 @@ public class Controller {
         System.out.println("zoomOut");
     }
 
-    public void aboutOnAction() {
-        System.out.println("about");
-    }
 }
