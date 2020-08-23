@@ -14,24 +14,26 @@ public class ThisTextArea {
         this.textArea = textArea;
         listChangeOfTextArea.add(textArea.getText());
         textArea.textProperty().addListener((observable, oldValue, newValue) -> {
+
                     System.out.println(" Text Changed to  " + newValue + "\tfrom  " + oldValue);
                     System.out.print(listChangeOfTextArea.toString() + "-> \t");
+
                     listChangeOfTextArea.add(textArea.getText());
+
                     System.out.println(listChangeOfTextArea.toString());
 
                     // Another reset? - for example:
                     // values are really small - for the test
                     deleteFirstSavedChanges(10, 5);
 
-
-
                     if(controller.wasNewFile) {
                         controller.setNewAppTitleForNewFile();
                         controller.textAreaWasChanged = false;
                         controller.wasNewFile = false;
                     } else {
-                        controller.setNewAppTitle();
                         controller.textAreaWasChanged = true;
+                        controller.setNewAppTitle();
+                        System.out.println("a");
                     }
                 }
         );
