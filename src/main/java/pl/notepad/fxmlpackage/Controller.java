@@ -7,10 +7,13 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import pl.notepad.boxes.ConfirmBox;
+import pl.notepad.boxes.TestBox;
 import pl.notepad.naming.NamingMenuItems;
 import pl.notepad.openAndSaveFile.FileOpener;
 import pl.notepad.openAndSaveFile.SaveFile;
 import pl.notepad.textArea.ThisTextArea;
+
+import java.io.IOException;
 
 public class Controller {
     ThisTextArea thisTextArea;
@@ -83,6 +86,30 @@ public class Controller {
         }
     }
 
+    private void displayConfirmBoxToExitNEW(boolean tests) throws IOException {
+        if (!textAreaWasChanged) {
+            if (!tests) {
+                System.exit(0);
+            } else {
+                Platform.exit();
+            }
+        } else {
+            TestBox testBox = new TestBox();
+
+            boolean wantToSave = testBox.display("title", "ayaya");
+            if (testBox.somethingWasChosen) {
+                if (wantToSave) {
+                    saveFileOnAction();
+                }
+                if (!tests) {
+                    System.exit(0);
+                } else {
+                    Platform.exit();
+                }
+            }
+        }
+    }
+
     private void displayConfirmBoxToNew() {
         if (textAreaIsNullOrBlank() || !textAreaWasChanged) {
             textArea.setText("");
@@ -109,14 +136,15 @@ public class Controller {
     }
 
     // Exit for tests is now here
-    public void exitOnAction() {
+    public void exitOnAction() throws IOException {
         boolean tests = false;
-        displayConfirmBoxToExit(tests);
+        //displayConfirmBoxToExit(tests);
+        displayConfirmBoxToExitNEW(tests);
     }
 
     public void openFileOnAction() {
         String open = FileOpener.readStringFromFile();
-        if(open != null) {
+        if (open != null) {
             setNewTextToTextArea(open);
             textAreaWasChanged = false;
             setNewAppTitle();
