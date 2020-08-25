@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class ConfirmBoxController {
     @FXML
@@ -13,15 +14,19 @@ public class ConfirmBoxController {
     Button yesButton;
     @FXML
     Button noButton;
+    @FXML
+    Button cancelButton;
 
     boolean answer;
     public boolean somethingWasChosen = false;
 
     public boolean display(String message, Stage window, Scene scene) {
         window.setScene(scene);
+        window.setResizable(false);
 
         yesButton.setText("Yes");
         noButton.setText("No");
+        cancelButton.setText("Cancel");
         label.setText(message);
 
         yesButton.setOnAction(e -> {
@@ -35,6 +40,12 @@ public class ConfirmBoxController {
             somethingWasChosen = true;
             window.close();
         });
+
+        cancelButton.setOnAction(e -> {
+            somethingWasChosen = false;
+            window.close();
+        });
+
 
         window.showAndWait();
         return answer;

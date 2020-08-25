@@ -5,26 +5,22 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="100.0"
-            prefWidth="250.0"
-            xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="pl.notepad.fxmlpackage.ConfirmBoxController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.notepad.fxmlpackage.ConfirmBoxController">
    <center>
-      <Label text="Label" BorderPane.alignment="CENTER" fx:id="label"/>
+      <Label fx:id="label" text="Label" BorderPane.alignment="CENTER" />
    </center>
    <bottom>
-      <HBox spacing="20.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="26.0" prefWidth="285.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Button" fx:id="yesButton"/>
-            <Button mnemonicParsing="false" text="Button"  fx:id="noButton"/>
-            <Button mnemonicParsing="false" text="Button"  fx:id="cancelButton"/>
+            <Region prefHeight="26.0" prefWidth="18.0" />
+            <Button fx:id="yesButton" mnemonicParsing="false" text="Button" />
+            <Button fx:id="noButton" mnemonicParsing="false" text="Button" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" text="Button" />
          </children>
          <BorderPane.margin>
-            <Insets bottom="20.0" left="20.0" />
+            <Insets bottom="20.0" />
          </BorderPane.margin>
       </HBox>
    </bottom>

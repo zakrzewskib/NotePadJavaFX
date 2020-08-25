@@ -72,7 +72,6 @@ public class Controller {
         } else {
             ConfirmBox confirmBox = new ConfirmBox();
             boolean wantToSave = confirmBox.display("NotePad", "Do you want to save?");
-            System.out.println(confirmBox.somethingWasChosen);
             if (confirmBox.somethingWasChosen) {
                 if (wantToSave) {
                     saveFileOnAction();
