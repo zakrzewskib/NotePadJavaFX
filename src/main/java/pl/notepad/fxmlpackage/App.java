@@ -1,14 +1,11 @@
 package pl.notepad.fxmlpackage;
 
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
-import pl.notepad.boxes.TestBox;
 import pl.notepad.shortcuts.MyKeyShortcuts;
 
 import java.io.IOException;
@@ -66,14 +63,11 @@ public class App extends Application {
         stage.setOnCloseRequest(e -> {
             try {
                 controller.exitOnAction();
+                e.consume();
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
         });
-
-        //Testing testBox right after opening App
-//        TestBox testBox = new TestBox();
-//        testBox.display("title", "ayaya");
     }
 
     static FXMLLoader fxmlLoader;

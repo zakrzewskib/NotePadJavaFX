@@ -1,49 +1,40 @@
 package pl.notepad.boxes;
 
-import javafx.geometry.Pos;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import pl.notepad.fxmlpackage.ConfirmBoxController;
+
+import java.io.IOException;
 
 public class ConfirmBox {
 
-    static boolean answer;
-    public static boolean somethingWasChosen = false;
+    public Stage window;
+    public Scene scene;
+    boolean answer;
+    public boolean somethingWasChosen;
 
-    public static boolean display(String title, String message) {
-        Stage window = new Stage();
+    public boolean display(String title, String message) throws IOException {
+        window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle(title);
         window.setMinWidth(250);
-        Label label = new Label();
-        label.setText(message);
+        scene = new Scene(loadFXML("confirmBox"));
 
-        Button yesButton = new Button("Yes");
-        Button noButton = new Button("No");
-
-        yesButton.setOnAction(e -> {
-            answer = true;
-            somethingWasChosen = true;
-            window.close();
-        });
-
-        noButton.setOnAction(e -> {
-            answer = false;
-            somethingWasChosen = true;
-            window.close();
-        });
-
-        VBox layout = new VBox(10);
-
-        layout.getChildren().addAll(label, yesButton, noButton);
-        layout.setAlignment(Pos.CENTER);
-        Scene scene = new Scene(layout);
-        window.setScene(scene);
-        window.showAndWait();
-
+        ConfirmBoxController t = fxmlLoader.getController();
+        answer = t.display(message, window, scene);
+        somethingWasChosen = t.somethingWasChosen;
+        System.out.println(somethingWasChosen);
         return answer;
     }
+
+    FXMLLoader fxmlLoader;
+
+    private Parent loadFXML(String fxml) throws IOException {
+        fxmlLoader = new FXMLLoader(ConfirmBox.class.getResource(fxml + ".fxml"));
+        return fxmlLoader.load();
+    }
+
 }

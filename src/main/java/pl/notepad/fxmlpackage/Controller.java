@@ -7,7 +7,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import pl.notepad.boxes.ConfirmBox;
-import pl.notepad.boxes.TestBox;
 import pl.notepad.naming.NamingMenuItems;
 import pl.notepad.openAndSaveFile.FileOpener;
 import pl.notepad.openAndSaveFile.SaveFile;
@@ -63,8 +62,7 @@ public class Controller {
         return textArea.getText() == null || textArea.getText().equals("");
     }
 
-    // Exit for tests is now here
-    private void displayConfirmBoxToExit(boolean tests) {
+    private void displayConfirmBoxToExit(boolean tests) throws IOException {
         if (!textAreaWasChanged) {
             if (!tests) {
                 System.exit(0);
@@ -72,8 +70,10 @@ public class Controller {
                 Platform.exit();
             }
         } else {
-            boolean wantToSave = ConfirmBox.display("NotePad", "Do you want to save?");
-            if (ConfirmBox.somethingWasChosen) {
+            ConfirmBox confirmBox = new ConfirmBox();
+            boolean wantToSave = confirmBox.display("NotePad", "Do you want to save?");
+            System.out.println(confirmBox.somethingWasChosen);
+            if (confirmBox.somethingWasChosen) {
                 if (wantToSave) {
                     saveFileOnAction();
                 }
@@ -86,36 +86,13 @@ public class Controller {
         }
     }
 
-    private void displayConfirmBoxToExitNEW(boolean tests) throws IOException {
-        if (!textAreaWasChanged) {
-            if (!tests) {
-                System.exit(0);
-            } else {
-                Platform.exit();
-            }
-        } else {
-            TestBox testBox = new TestBox();
-
-            boolean wantToSave = testBox.display("title", "ayaya");
-            if (testBox.somethingWasChosen) {
-                if (wantToSave) {
-                    saveFileOnAction();
-                }
-                if (!tests) {
-                    System.exit(0);
-                } else {
-                    Platform.exit();
-                }
-            }
-        }
-    }
-
-    private void displayConfirmBoxToNew() {
+    private void displayConfirmBoxToNew() throws IOException {
         if (textAreaIsNullOrBlank() || !textAreaWasChanged) {
             textArea.setText("");
         } else {
-            boolean wantToSave = ConfirmBox.display("NotePad", "Do you want to save?");
-            if (ConfirmBox.somethingWasChosen) {
+            ConfirmBox confirmBox = new ConfirmBox();
+            boolean wantToSave = confirmBox.display("NotePad", "Do you want to save?");
+            if (confirmBox.somethingWasChosen) {
                 if (wantToSave) {
                     saveFileOnAction();
                 }
@@ -131,15 +108,13 @@ public class Controller {
     public boolean wasNewFile = false;
 
     @FXML
-    public void newFileOnAction() {
+    public void newFileOnAction() throws IOException {
         displayConfirmBoxToNew();
     }
 
-    // Exit for tests is now here
     public void exitOnAction() throws IOException {
         boolean tests = false;
-        //displayConfirmBoxToExit(tests);
-        displayConfirmBoxToExitNEW(tests);
+        displayConfirmBoxToExit(tests);
     }
 
     public void openFileOnAction() {

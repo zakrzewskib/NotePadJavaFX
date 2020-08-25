@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-public class TController {
+public class ConfirmBoxController {
     @FXML
     Label label;
     @FXML
@@ -37,10 +37,6 @@ public class TController {
         });
 
         window.showAndWait();
-
-        System.out.println("answer is: " + answer);
-        System.out.println("somethingWasChosen (in TController) is: " + somethingWasChosen);
         return answer;
     }
-
 }

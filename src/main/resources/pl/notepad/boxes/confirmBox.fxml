@@ -12,7 +12,7 @@
             prefWidth="250.0"
             xmlns="http://javafx.com/javafx/11.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="pl.notepad.fxmlpackage.TController">
+            fx:controller="pl.notepad.fxmlpackage.ConfirmBoxController">
    <center>
       <Label text="Label" BorderPane.alignment="CENTER" fx:id="label"/>
    </center>
