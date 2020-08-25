@@ -62,27 +62,39 @@ public class Controller {
         return textArea.getText() == null || textArea.getText().equals("");
     }
 
+    private void exit(boolean tests) {
+        if (!tests) {
+            System.exit(0);
+        } else {
+            Platform.exit();
+        }
+    }
+
     private void displayConfirmBoxToExit(boolean tests) throws IOException {
         if (!textAreaWasChanged) {
-            if (!tests) {
-                System.exit(0);
-            } else {
-                Platform.exit();
-            }
+            exit(tests);
         } else {
             ConfirmBox confirmBox = new ConfirmBox();
             boolean wantToSave = confirmBox.display("NotePad", "Do you want to save?");
             if (confirmBox.somethingWasChosen) {
                 if (wantToSave) {
                     saveFileOnAction();
-                }
-                if (!tests) {
-                    System.exit(0);
+                    if (SaveFile.getFile() != null) {
+                        exit(tests);
+                    }
                 } else {
-                    Platform.exit();
+                    exit(tests);
                 }
             }
         }
+    }
+
+    private void newTextArea() {
+        SaveFile.setFile(null);
+        thisTextArea.resetListChangeOfTextArea();
+        wasNewFile = true;
+        setNewAppTitle();
+        textArea.setText("");
     }
 
     private void displayConfirmBoxToNew() throws IOException {
@@ -94,12 +106,12 @@ public class Controller {
             if (confirmBox.somethingWasChosen) {
                 if (wantToSave) {
                     saveFileOnAction();
+                    if (SaveFile.getFile() != null) {
+                        newTextArea();
+                    }
+                } else {
+                    newTextArea();
                 }
-                SaveFile.setFile(null);
-                thisTextArea.resetListChangeOfTextArea();
-                wasNewFile = true;
-                setNewAppTitle();
-                textArea.setText("");
             }
         }
     }
