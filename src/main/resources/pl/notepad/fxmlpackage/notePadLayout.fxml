@@ -47,7 +47,7 @@
                             <items>
                                 <MenuItem mnemonicParsing="false" onAction="#undoOnAction" text="My Undo" />
                                 <SeparatorMenuItem mnemonicParsing="false" />
-                                <MenuItem mnemonicParsing="false" onAction="#redoOnAction" text="Redo" />
+                                <MenuItem mnemonicParsing="false" onAction="#redoOnAction" text="My Redo" />
                                 <MenuItem mnemonicParsing="false" onAction="#cutOnAction" text="Cut" />
                                 <MenuItem mnemonicParsing="false" onAction="#copyOnAction" text="Copy" />
                                 <MenuItem mnemonicParsing="false" onAction="#pasteOnAction" text="Paste" />

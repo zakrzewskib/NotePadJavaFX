@@ -46,22 +46,27 @@ public class ThisTextArea {
         listOfChangesInTextArea = new ArrayList<>();
     }
 
-    private String lastString;
+    private ArrayList<String> redoList = new ArrayList<>();
 
     public void undo() {
         try {
             int last = listOfChangesInTextArea.size() - 1;
-
-            lastString = listOfChangesInTextArea.get(last);
-
+            redoList.add(listOfChangesInTextArea.get(last));
             listOfChangesInTextArea.remove(last);
             textArea.setText(listOfChangesInTextArea.get(listOfChangesInTextArea.size() - 1));
             listOfChangesInTextArea.remove(last);
+
         } catch (IndexOutOfBoundsException ignored) {
         }
     }
 
     public void redo() {
-        textArea.setText(lastString);
+        try {
+            int last =redoList.size()-1;
+            textArea.setText(redoList.get(last));
+            redoList.remove(last);
+        } catch (IndexOutOfBoundsException ignored) {
+
+        }
     }
 }
