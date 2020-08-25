@@ -3,6 +3,7 @@ package pl.notepad.fxmlpackage;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckMenuItem;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
@@ -34,6 +35,8 @@ public class Controller {
     CheckMenuItem statusBarCheck;
     @FXML
     HBox statusBar;
+    @FXML
+    public Label lineNumber;
 
     public boolean textAreaWasChanged = false;
 

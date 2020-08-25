@@ -13,10 +13,13 @@ public class ThisTextArea {
     public ThisTextArea(TextArea textArea, Controller controller) {
         this.controller = controller;
         this.textArea = textArea;
+        controller.lineNumber.setText("Line number: " + countLines());
         listOfChangesInTextArea.add(textArea.getText());
         textArea.textProperty().addListener((observable, oldValue, newValue) -> {
                     listOfChangesInTextArea.add(textArea.getText());
                     deleteFirstSavedChanges(10, 5);
+
+                    controller.lineNumber.setText("Line number: " + countLines());
 
                     if (controller.wasNewFile) {
                         controller.setNewAppTitleForNewFile();
@@ -28,6 +31,16 @@ public class ThisTextArea {
                     }
                 }
         );
+    }
+
+    public int countLines() {
+        int count = 0;
+        for(char c : textArea.getText().toCharArray()) {
+            if(c == '\n') {
+                count++;
+            }
+        }
+        return count;
     }
 
     public ArrayList<String> getListOfChangesInTextArea() {
