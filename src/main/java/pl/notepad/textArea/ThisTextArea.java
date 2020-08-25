@@ -1,67 +1,67 @@
 package pl.notepad.textArea;
 
-import java.util.ArrayList;
 import javafx.scene.control.TextArea;
 import pl.notepad.fxmlpackage.Controller;
 
+import java.util.ArrayList;
+
 public class ThisTextArea {
-    ArrayList<String> listChangeOfTextArea = new ArrayList<>();
+    ArrayList<String> listOfChangesInTextArea = new ArrayList<>();
     TextArea textArea;
     Controller controller;
 
     public ThisTextArea(TextArea textArea, Controller controller) {
         this.controller = controller;
         this.textArea = textArea;
-        listChangeOfTextArea.add(textArea.getText());
+        listOfChangesInTextArea.add(textArea.getText());
         textArea.textProperty().addListener((observable, oldValue, newValue) -> {
-
-                    System.out.println(" Text Changed to  " + newValue + "\tfrom  " + oldValue);
-                    System.out.print(listChangeOfTextArea.toString() + "-> \t");
-
-                    listChangeOfTextArea.add(textArea.getText());
-
-                    System.out.println(listChangeOfTextArea.toString());
-
-                    // Another reset? - for example:
-                    // values are really small - for the test
+                    listOfChangesInTextArea.add(textArea.getText());
                     deleteFirstSavedChanges(10, 5);
 
-                    if(controller.wasNewFile) {
+                    if (controller.wasNewFile) {
                         controller.setNewAppTitleForNewFile();
                         controller.textAreaWasChanged = false;
                         controller.wasNewFile = false;
                     } else {
                         controller.textAreaWasChanged = true;
                         controller.setNewAppTitle();
-                        System.out.println("a");
                     }
                 }
         );
     }
 
-    public ArrayList<String> getListChangeOfTextArea() {
-        return listChangeOfTextArea;
+    public ArrayList<String> getListOfChangesInTextArea() {
+        return listOfChangesInTextArea;
     }
 
     public void deleteFirstSavedChanges(int maxSize, int elements) {
-        if(listChangeOfTextArea.size() > maxSize) {
+        if (listOfChangesInTextArea.size() > maxSize) {
             if (elements > 0) {
-                listChangeOfTextArea.subList(0, elements).clear();
+                listOfChangesInTextArea.subList(0, elements).clear();
             }
         }
     }
 
     public void resetListChangeOfTextArea() {
-        listChangeOfTextArea = new ArrayList<>();
+        listOfChangesInTextArea = new ArrayList<>();
     }
 
-    public void undo(){
+    private String lastString;
+
+    public void undo() {
         try {
-            int last = listChangeOfTextArea.size() - 1;
-            listChangeOfTextArea.remove(last);
-            textArea.setText(listChangeOfTextArea.get(listChangeOfTextArea.size() - 1));
-            listChangeOfTextArea.remove(last);
+            int last = listOfChangesInTextArea.size() - 1;
+
+            lastString = listOfChangesInTextArea.get(last);
+
+            listOfChangesInTextArea.remove(last);
+            textArea.setText(listOfChangesInTextArea.get(listOfChangesInTextArea.size() - 1));
+            listOfChangesInTextArea.remove(last);
         } catch (IndexOutOfBoundsException ignored) {
         }
+    }
+
+    public void redo() {
+        textArea.setText(lastString);
     }
 }

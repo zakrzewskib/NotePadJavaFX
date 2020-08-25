@@ -199,6 +199,7 @@ public class Controller {
 
     public void redoOnAction() {
         System.out.println("redo");
+        thisTextArea.redo();
     }
 
     public void cutOnAction() {
