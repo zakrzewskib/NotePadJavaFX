@@ -37,6 +37,8 @@ public class Controller {
     HBox statusBar;
     @FXML
     public Label lineNumber;
+    @FXML
+    public MenuItem undoButton;
 
     public boolean textAreaWasChanged = false;
 

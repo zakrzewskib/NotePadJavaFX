@@ -17,9 +17,17 @@ public class ThisTextArea {
         listOfChangesInTextArea.add(textArea.getText());
         textArea.textProperty().addListener((observable, oldValue, newValue) -> {
                     listOfChangesInTextArea.add(textArea.getText());
-                    deleteFirstSavedChanges(10, 5);
+
+                    //deleteFirstSavedChanges(10, 5);
 
                     controller.lineNumber.setText("Line number: " + countLines());
+
+                    System.out.println(listOfChangesInTextArea);
+//                    if(listOfChangesInTextArea.size() <= 2) {
+//                        controller.undoButton.setDisable(true);
+//                    } else {
+//                        controller.undoButton.setDisable(false);
+//                    }
 
                     if (controller.wasNewFile) {
                         controller.setNewAppTitleForNewFile();
