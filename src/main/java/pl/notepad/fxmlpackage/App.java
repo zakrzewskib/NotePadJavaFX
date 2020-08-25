@@ -4,8 +4,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
+import pl.notepad.shortcuts.MultipleKeyCombination;
 import pl.notepad.shortcuts.MyKeyShortcuts;
 
 import java.io.IOException;
@@ -22,10 +25,17 @@ public class App extends Application {
         scene.getAccelerators().put(k, r);
     }
 
+    private void addMultipleKyeCombination() {
+        scene.getAccelerators().put(new MultipleKeyCombination(KeyCode.CONTROL, KeyCode.SHIFT, KeyCode.S),
+                keyShortcuts.getRunnableForCtrlPlusShiftPlusS());
+        MultipleKeyCombination.setupMultipleKeyCombination(scene);
+    }
+
     private void addShortCuts() {
         addShortCut(keyShortcuts.getCtrlPlusN(), keyShortcuts.getRunnableForCtrlPlusN());
         addShortCut(keyShortcuts.getCtrlPlusO(), keyShortcuts.getRunnableForCtrlPlusO());
         addShortCut(keyShortcuts.getCtrlPlusS(), keyShortcuts.getRunnableForCtrlPlusS());
+        addMultipleKyeCombination();
     }
 
     Controller controller;

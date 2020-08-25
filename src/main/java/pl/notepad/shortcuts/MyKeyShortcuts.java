@@ -46,4 +46,8 @@ public class MyKeyShortcuts {
     public Runnable getRunnableForCtrlPlusS() {
         return () -> controller.saveFileOnAction();
     }
+
+    public Runnable getRunnableForCtrlPlusShiftPlusS() {
+        return () -> controller.saveFileAsOnAction();
+    }
 }

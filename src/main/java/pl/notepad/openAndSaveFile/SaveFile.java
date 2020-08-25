@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import pl.notepad.shortcuts.MultipleKeyCombination;
 
 public class SaveFile {
     private static File file;
@@ -31,6 +32,7 @@ public class SaveFile {
     }
 
     public void saveFileAs(String text) {
+        MultipleKeyCombination.codes.clear();
 
         FileChooser fileChooser = new FileChooser();
         setInitialDirectory(fileChooser);
