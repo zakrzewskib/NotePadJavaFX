@@ -18,9 +18,9 @@
             <children>
             <Region prefHeight="18.0" prefWidth="466.0" />
                 <Label fx:id="lineNumber" prefHeight="18.0" prefWidth="94.0" text="Line number:   " />
-            <Label prefHeight="18.0" prefWidth="66.0" text="Column:   " />
-            <Label prefHeight="18.0" prefWidth="45.0" text="100%" />
-            <Label prefHeight="18.0" prefWidth="87.0" text="Windows/Linux" />
+            <Label prefHeight="18.0" prefWidth="66.0" text="Column:" />
+            <Label prefHeight="18.0" prefWidth="45.0" text="..." />
+            <Label prefHeight="18.0" prefWidth="87.0" text="..." />
             </children>
             <BorderPane.margin>
                 <Insets />
