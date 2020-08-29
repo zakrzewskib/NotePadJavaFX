@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
@@ -57,10 +58,36 @@ public class Controller {
     }
 
     @FXML
+    MenuItem fontButton;
+    @FXML
+    MenuItem cutButton;
+    @FXML
+    MenuItem copyButton;
+    @FXML
+    MenuItem pasteButton;
+    @FXML
+    MenuItem deleteButton;
+    @FXML
+    MenuItem selectAllButton;
+    @FXML
+    Menu zoomMenu;
+
+    private void setMenuItemsDisabled() {
+        cutButton.setDisable(true);
+        copyButton.setDisable(true);
+        pasteButton.setDisable(true);
+        deleteButton.setDisable(true);
+        selectAllButton.setDisable(true);
+        fontButton.setDisable(true);
+        zoomMenu.setDisable(true);
+    }
+
+    @FXML
     private void initialize() {
         instance = this;
         nm.setNamesForFilesOption();
         thisTextArea = new ThisTextArea(textArea, this);
+        setMenuItemsDisabled();
     }
 
     private boolean textAreaIsNullOrBlank() {

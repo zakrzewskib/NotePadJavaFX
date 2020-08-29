@@ -34,7 +34,5 @@ public class NamingMenuItems {
         controller.newFile.setText(makeNameWithShortcut(controller.newFile, "Ctrl+N"));
         controller.openFile.setText(makeNameWithShortcut(controller.openFile, "Ctrl+O"));
         controller.saveFile.setText(makeNameWithShortcut(controller.saveFile, "Ctrl+S"));
-        controller.saveFileAs.setText(makeNameWithShortcut(controller.saveFileAs, "Ctrl+Shift+S"));
-        controller.openFile.setText(makeNameWithShortcut(controller.openFile, ""));
     }
 }

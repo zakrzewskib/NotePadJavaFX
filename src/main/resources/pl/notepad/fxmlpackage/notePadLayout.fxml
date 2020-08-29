@@ -48,26 +48,26 @@
                             <items>
                                 <MenuItem fx:id="undoButton" mnemonicParsing="false" onAction="#undoOnAction" text="My Undo" />
                                 <SeparatorMenuItem mnemonicParsing="false" />
-                                <MenuItem mnemonicParsing="false" onAction="#redoOnAction" text="My Redo" />
-                                <MenuItem mnemonicParsing="false" onAction="#cutOnAction" text="Cut" />
-                                <MenuItem mnemonicParsing="false" onAction="#copyOnAction" text="Copy" />
-                                <MenuItem mnemonicParsing="false" onAction="#pasteOnAction" text="Paste" />
-                                <MenuItem mnemonicParsing="false" onAction="#deleteOnAction" text="Delete" />
+                                <MenuItem fx:id="redoButton" mnemonicParsing="false" onAction="#redoOnAction" text="My Redo" />
+                                <MenuItem fx:id="cutButton" mnemonicParsing="false" onAction="#cutOnAction" text="Cut" />
+                                <MenuItem fx:id="copyButton" mnemonicParsing="false" onAction="#copyOnAction" text="Copy" />
+                                <MenuItem fx:id="pasteButton" mnemonicParsing="false" onAction="#pasteOnAction" text="Paste" />
+                                <MenuItem fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteOnAction" text="Delete" />
                                 <SeparatorMenuItem mnemonicParsing="false" />
-                                <MenuItem mnemonicParsing="false" onAction="#selectAllOnAction" text="Select All" />
+                                <MenuItem fx:id="selectAllButton" mnemonicParsing="false" onAction="#selectAllOnAction" text="Select All" />
                             </items>
                         </Menu>
 
                         <Menu mnemonicParsing="false" text="Format">
                             <items>
                                 <CheckMenuItem fx:id="wordWrapCheck" mnemonicParsing="false" onAction="#wordWrapOnAction" text="Word Wrap" />
-                                <MenuItem mnemonicParsing="false" onAction="#fontOnAction" text="Font" />
+                                <MenuItem fx:id="fontButton" mnemonicParsing="false" onAction="#fontOnAction" text="Font" />
                             </items>
                         </Menu>
 
                         <Menu mnemonicParsing="false" text="View">
                             <items>
-                                <Menu mnemonicParsing="false" text="Zoom">
+                                <Menu fx:id="zoomMenu" mnemonicParsing="false" text="Zoom">
                                     <items>
                                         <MenuItem mnemonicParsing="false" onAction="#zoomInOnAction" text="Zoom In" />
                                         <MenuItem mnemonicParsing="false" onAction="#zoomOutOnAction" text="Zoom Out" />
@@ -79,13 +79,9 @@
 
                         <Menu mnemonicParsing="false" text="Help">
                             <items>
-                                <MenuItem mnemonicParsing="false" onAction="#aboutOnAction" text="About" />
+                                <MenuItem fx:id="aboutButton" mnemonicParsing="false" onAction="#aboutOnAction" text="About" />
                             </items>
                         </Menu>
-                  <Menu mnemonicParsing="false" text="Exit">
-                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#exitOnAction" text="Exit" />
-                     </items></Menu>
 
                     </menus>
                 </MenuBar>
